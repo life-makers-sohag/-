@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دوائك علينا — صناع الحياة سوهاج</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap">
+<style>
+:root{--navy:#034572;--gold:#F5AE45;--bg:#F6F8FA;--card:#fff;--ink:#12263A;--mute:#5A6B7B;--line:#DDE4EA;--ok:#1E8A5A;--bad:#C2413B;--on-navy:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1722;--card:#12263A;--ink:#EAF0F5;--mute:#9DB0C1;--line:#24405A;--navy:#0A5A92}color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Cairo,Tahoma,sans-serif;line-height:1.7}
+header{background:var(--navy);color:var(--on-navy);padding:14px 20px 0;position:sticky;top:0;z-index:5;padding-top:calc(14px + env(safe-area-inset-top,0px))}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px}
+.dot{width:26px;height:26px;border-radius:50%;background:var(--gold);box-shadow:-14px 0 0 #fff3}
+.brand small{font-weight:400;opacity:.8;font-size:13px;margin-inline-start:auto}
+nav{display:flex;gap:2px;overflow-x:auto;margin-top:8px}
+nav button{background:none;border:0;color:#fff;opacity:.75;font:600 14px Cairo;padding:10px 14px;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+nav button.on{opacity:1;border-color:var(--gold)}
+main{max-width:1100px;margin:0 auto;padding:20px}
+h2{margin:0 0 4px;font-size:24px;color:var(--navy)}h3{margin:0 0 6px;font-size:17px}
+@media(prefers-color-scheme:dark){h2{color:var(--gold)}}
+.sub{color:var(--mute);margin:0 0 18px}
+.hero{background:var(--navy);color:#fff;border-radius:18px;padding:36px 28px;margin-bottom:18px;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(30px,6vw,52px);margin:0;font-weight:800;line-height:1.2}
+.hero p{max-width:620px;opacity:.9;margin:12px 0 20px}
+.hero:after{content:"";position:absolute;inset-inline-start:-60px;bottom:-80px;width:220px;height:220px;border-radius:50%;background:var(--gold);opacity:.95}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.kpi b{display:block;font-size:32px;color:var(--navy);line-height:1.2}
+@media(prefers-color-scheme:dark){.kpi b{color:var(--gold)}}
+.btn{background:var(--gold);color:#1b1b1b;border:0;border-radius:8px;padding:9px 18px;font:700 14px Cairo;cursor:pointer}
+.btn.alt{background:transparent;border:1.5px solid var(--navy);color:var(--navy)}
+@media(prefers-color-scheme:dark){.btn.alt{border-color:var(--gold);color:var(--gold)}}
+.btn.sm{padding:3px 11px;font-size:13px}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+label{display:block;font-size:13px;font-weight:600;color:var(--mute);margin-bottom:10px}
+input,select,textarea{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:400 15px Cairo;margin-top:3px}
+.row{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.tag{display:inline-block;padding:1px 10px;border-radius:99px;font-size:12px;font-weight:700;background:var(--line);color:var(--ink)}
+.t-u{background:var(--bad);color:#fff}.t-h{background:var(--gold);color:#1b1b1b}.t-ok{background:var(--ok);color:#fff}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:9px 10px;text-align:start;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--mute);font-weight:600}
+.steps{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.st{flex:1;min-width:110px;padding:8px;border-radius:8px;background:var(--line);font-size:12px;text-align:center}
+.st.d{background:var(--navy);color:#fff}.st.c{background:var(--gold);color:#1b1b1b;font-weight:700}
+.bar{height:10px;border-radius:5px;background:var(--line);overflow:hidden}.bar i{display:block;height:100%;background:var(--gold)}
+.wk{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.wk input{width:20px;height:20px;margin-top:5px;accent-color:var(--navy)}
+.ph{font-weight:800;color:var(--navy);margin:18px 0 4px}
+@media(prefers-color-scheme:dark){.ph{color:var(--gold)}}
+.score{font-size:40px;font-weight:800;color:var(--navy)}
+@media(prefers-color-scheme:dark){.score{color:var(--gold)}}
+.rule{border-inline-start:4px solid var(--gold);padding:6px 12px;margin:6px 0;background:var(--card)}
+.warn{color:var(--bad);font-weight:700}
+.sn{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}.sn button{background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:6px 14px;font:600 14px Cairo;cursor:pointer}.sn button.on{background:var(--navy);color:#fff;border-color:var(--navy)}.ban{background:var(--card);border:1.5px dashed var(--gold);border-radius:10px;padding:10px 14px;margin-bottom:14px;font-size:14px}.pm b{font-size:20px;direction:ltr;display:inline-block;color:var(--navy)}@media(prefers-color-scheme:dark){.pm b{color:var(--gold)}}.toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));inset-inline:20px;max-width:360px;margin:auto;background:var(--navy);color:#fff;padding:12px 16px;border-radius:10px;display:none;text-align:center;z-index:9}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand"><span class="dot"></span>دوائك علينا<small>مؤسسة صناع الحياة · سوهاج</small></div>
+ <nav id="nav"></nav>
+</header>
+<main id="app"><div class="card">جارٍ تحميل البيانات…</div></main>
+<div class="toast" id="toast"></div>
+<script>
+const HASH="91eb1c90926cbb68cb8fc06045778c79bf2f2620ace26853486dfa0b4da73b7b";
+const PUBLIC={pay:[],wa:"",goal:0};
+const TABS=[["home","الرئيسية"],["donate","تبرّع"],["sponsor","كفالة مريض"],["plan","الخطة الزمنية"],["board","البورد والقواعد"],["admin","🔒 لوحة الإدارة"]];
+const ADM=[["dash","المؤشرات"],["new","تسجيل حالة"],["cases","الحالات"],["inv","المخزون"],["don","التبرعات"],["exp","المصروفات"],["pay","الدفع والإعدادات"]];
+const STAGES=["تسجيل الطلب","مراجعة الاستحقاق","مراجعة طبية وصيدلية","اعتماد","صرف العلاج","متابعة"];
+const PT=["فودافون كاش","إنستاباي","حساب بنكي","محفظة إلكترونية أخرى","تحصيل نقدي بالمقر"];
+const WEEKS=[["التأسيس والتجهيز","تشكيل فريق العمل","اختيار المسؤولين وتحديد المركز المستهدف واجتماع توزيع المهام"],["","حصر الأسر والاحتياجات","استمارة موحدة، توثيق المستندات الطبية، كود لكل أسرة"],["","قواعد الاستحقاق والأولوية","نظام 100 درجة، آلية التظلم وإعادة التقييم"],["","مصادر الأدوية والمخزون","سجل المخزون، شراكات الصيدليات وبنك الشفاء المصري"],["التشغيل التجريبي","استقبال الطلبات","رقم لكل طلب وتصنيفه، مراجعة خلال 3–5 أيام عمل"],["","مراجعة الحالات واعتمادها","مراجعة صيدلية، تحديد التكلفة ومصدر التمويل"],["","توفير العلاج وصرفه","قائمة صرف أسبوعية، فواتير، إثبات استلام يحفظ الكرامة"],["","المتابعة وتقييم التجربة","متابعة بعد الصرف وتقرير الشهر الثاني"],["التوسع والاستدامة","التوسع التدريجي","أسر ومراكز إضافية دون المساس بالحالات المزمنة"],["","الشراكات والتبرعات","ملف تعريفي، برنامج «كفالة مريض»، ضم الصيادلة والأطباء"],["","مراجعة الأداء","أسباب عدم التوفير، المخزون والموردين، تحديث القواعد"],["","التقييم النهائي وخطة الاستمرار","تقرير الـ 90 يومًا وخطة الـ 3 شهور التالية"]];
+const ROLES=[["مسؤول المشروع","التنسيق مع الإدارة · الاجتماعات الدورية · إدارة المخاطر · التقارير · اعتماد قوائم الصرف"],["نائب مسؤول المشروع","متابعة التشغيل اليومي · التنسيق مع المراكز · النيابة الإدارية · جودة الإجراءات"],["مسؤول الشراكات والعلاقات الخارجية","الصيدليات والشركات والموزعون · الملف التعريفي · اتفاقيات التعاون · التبرعات عبر القنوات الرسمية"],["مسؤول النظم والمعلومات والتتبع","قاعدة البيانات · الأكواد والسرية · نماذج التسجيل · ربط البيانات ومتابعة الكفيل"],["مسؤول الأبحاث وإدارة الحالة","تحديث البيانات · معيار الـ 100 درجة · التوثيق المستندي · التظلمات"],["مسؤول الكفالات الصحية","حصر الحالات المزمنة · استمرارية الدعم · المتابعة بعد الصرف"],["مسؤول جرد الأدوية والرقابة الدوائية","التصنيف الميداني · مراجعة الروشتات · سجل المخزون · الصلاحيات وFEFO · رصد العجز"],["مسؤول التنفيذ والتسويات","خطط الصرف · سلامة التسليم والحالات العاجلة · تسوية الفواتير · مطابقة التبرعات"]];
+const RULES=["لا يُصرف أي دواء دون تسجيل واعتماد وتوثيق.","لا تُصرف الأدوية إلا بعد مراجعة المختص.","لا تُقبل أدوية مجهولة المصدر أو منتهية الصلاحية أو مرتجعة.","لا تُحدد الأولوية بالمجاملات أو المعرفة الشخصية.","لا تُنشر بيانات الأسر أو تفاصيل أمراضها في المجموعات العامة.","لا تُعد الأسرة مستفيدة إلا بعد استلام العلاج فعليًا.","لا يُستبدل دواء بآخر دون مراجعة مهنية.","تُوجَّه الحالات الطارئة فورًا إلى الرعاية المناسبة."];
+const day=n=>new Date(Date.now()+n*864e5).toISOString().slice(0,10);
+const dd=d=>Math.round((new Date(d)-new Date(day(0)))/864e5);
+const M=n=>Number(n||0).toLocaleString("ar-EG")+" جنيه";
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const g=id=>document.getElementById(id);
+const nid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+const sum=(a,f)=>a.reduce((x,y)=>x+(+f(y)||0),0);
+let db=null,ready=false,adm=false,tab="home",sub="dash",pend=false;
+let S={cases:[],inv:[],don:[],exp:[],log:[],cfg:{},weeks:{}};
+try{adm=sessionStorage.getItem("adm")==="1"}catch(e){}
+{const h=location.hash.slice(1);if(TABS.some(t=>t[0]===h))tab=h}
+const CF=()=>({pay:S.cfg.pay||PUBLIC.pay,wa:S.cfg.wa??PUBLIC.wa,goal:S.cfg.goal??PUBLIC.goal});
+const toast=m=>{const t=g("toast");t.textContent=m;t.style.display="block";clearTimeout(toast.t);toast.t=setTimeout(()=>t.style.display="none",3200)};
+const prio=s=>s>=75?["عاجلة جدًا","t-u"]:s>=55?["مرتفعة","t-h"]:["متوسطة",""];
+async function init(){
+ try{db=await window.claude.use("db")}catch(e){db=null}
+ ready=true;
+ if(db){const L=(c,k)=>db.collection(c).onSnapshot(s=>{S[k]=s.docs.map(d=>({...d.data(),id:d.id}));render()},()=>{});
+  L("cases","cases");L("inv","inv");L("donations","don");L("expenses","exp");L("log","log");
+  db.collection("meta").doc("cfg").onSnapshot(d=>{S.cfg=d.exists?d.data():{};render()},()=>{});
+  db.collection("meta").doc("weeks").onSnapshot(d=>{S.weeks=d.exists?d.data():{};render()},()=>{})}
+ render(1)}
+async function put(c,id,o){if(!db){toast("لا يوجد اتصال بقاعدة البيانات. افتح الصفحة بحساب Claude المدعو للفريق.");return false}
+ try{await db.collection(c).doc(id).set(o);return true}catch(e){toast("تعذّر الحفظ: لا تملك صلاحية الكتابة هنا. اطلب من مالك الصفحة دعوتك بصلاحية محرر.");return false}}
+async function del(c,id){if(!db||!confirm("تأكيد الحذف؟"))return;try{await db.collection(c).doc(id).delete()}catch(e){toast("تعذّر الحذف: لا تملك الصلاحية.")}}
+const setCfg=p=>put("meta","cfg",{...S.cfg,...p});
+function nav(){g("nav").innerHTML=TABS.map(t=>`<button class="${t[0]===tab?"on":""}" onclick="go('${t[0]}')">${t[1]}</button>`).join("")}
+function go(t){tab=t;location.hash=t;render(1);scrollTo(0,0)}
+function render(f){const a=document.activeElement;
+ if(!f&&a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName)&&a.closest("#app")){pend=true;return}
+ pend=false;nav();if(!ready)return;g("app").innerHTML=V[tab]()+"";if(tab==="admin"&&adm&&sub==="new")pv()}
+document.addEventListener("focusout",()=>setTimeout(()=>{if(pend&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName))render(1)},250));
+addEventListener("hashchange",()=>{const t=location.hash.slice(1);if(V[t]&&t!==tab){tab=t;render(1)}});
+function calc(f){const pc=f.income/Math.max(f.members,1);
+ const a=f.income<=0?30:pc<300?30:pc<600?22:pc<1000?14:6;
+ const r=f.income<=0?1:f.cost/f.income;const b=r>=.5?25:r>=.3?18:r>=.15?10:4;
+ return a+b+f.urgency+Math.min(15,(f.chronic?10:3)+(f.patients>1?5:0))+(f.alt?0:10)}
+const empty=t=>`<div class="card sub">${t}</div>`;
+const stepsH=x=>`<div class="steps">${STAGES.map((s,i)=>`<div class="st ${i<x.stage?"d":i===x.stage?"c":""}">${s}</div>`).join("")}</div>`;
+const V={
+home(){return `<section class="hero"><h1>دوائك علينا</h1><p>منظومة خيرية متكاملة لتوفير العلاج للأسر المستحقة بحسب احتياجها الفعلي: تسجيل الحالات، تحديد الأولويات، توفير الدواء من مصادر آمنة، ومتابعة الصرف والتبرعات خلال 90 يومًا.</p><button class="btn" onclick="go('donate')">تبرّع الآن</button> <button class="btn alt" style="color:#fff;border-color:#fff" onclick="go('sponsor')">تابع كفالتك</button></section>
+<h2>نظام التشغيل في 6 خطوات</h2><p class="sub">كل طلب يمر بالمسار نفسه من التسجيل حتى المتابعة.</p>
+<div class="grid">${STAGES.map((s,i)=>`<div class="card"><h3>${i+1}. ${s}</h3><span class="sub">${["استقبال بيانات الأسرة واحتياجها","تحديد الأحقية والأولوية","التأكد من الوصفة والدواء المناسب","تحديد الكمية والتكلفة والتمويل","من مصدر مرخص مع توثيق التسليم","التأكد من الاستلام وتحديث الاحتياجات"][i]}</span></div>`).join("")}</div>
+<h2 style="margin-top:26px">أهداف المشروع</h2>
+<div class="grid">${["توفير العلاج للأسر المستحقة وتخفيف العبء المادي","استمرارية العلاج لأصحاب الأمراض المزمنة","قاعدة بيانات متكاملة للأسر واحتياجاتها الدوائية","شراكات مع الصيدليات وشركات الأدوية والمتبرعين","سلامة الأدوية وصحة الصرف عبر متطوعين متخصصين","نظام شفاف وموثق للتبرعات والمخزون والصرف"].map(x=>`<div class="card">${x}</div>`).join("")}</div>`},
+donate(){const c=CF(),tot=sum(S.don.filter(d=>d.st==="مؤكد"),d=>d.amt);
+ return `<h2>تبرّع لمشروع دوائك علينا</h2><p class="sub">كل تبرع يُسجَّل ويُوثَّق ويُصرف على الأدوية فقط، عبر القنوات الرسمية للجمعية.</p>
+${db&&c.goal?`<div class="card" style="margin-bottom:14px"><b>${M(tot)}</b> من هدف ${M(c.goal)}<div class="bar" style="margin-top:8px"><i style="width:${Math.min(100,tot/c.goal*100)}%"></i></div></div>`:""}
+<h3>وسائل التحويل</h3>${c.pay.length?`<div class="grid">${c.pay.map(p=>`<div class="card pm"><span class="tag">${esc(p.type)}</span><div style="margin:6px 0"><b>${esc(p.number)}</b></div><div>${esc(p.holder)}</div><div class="sub" style="margin:0">${esc(p.note)}</div><button class="btn alt sm" style="margin-top:8px" onclick="cp('${esc(p.number)}')">نسخ الرقم</button></div>`).join("")}</div>`:empty("سيُعلَن عن وسائل التبرع هنا قريبًا.")}
+<h3 style="margin-top:22px">بعد التحويل</h3><div class="card"><div class="row"><label>اسمك<input id="dn"></label><label>المبلغ (جنيه)<input id="da" type="number" min="1"></label><label>وسيلة التحويل<select id="dm">${c.pay.map(p=>`<option>${esc(p.type)}</option>`).join("")||"<option>أخرى</option>"}</select></label><label>نوع التبرع<select id="dt"><option>تبرع عام للمشروع</option><option>كفالة مريض</option><option>تبرع عيني (أدوية)</option></select></label><label>كود المريض (للكفالة)<input id="dc" placeholder="DW-0001"></label></div>
+<button class="btn" onclick="wa()">أرسل الإيصال عبر واتساب</button> <span class="sub">سيصل طلبك للإدارة وتؤكد استلام التبرع.</span></div>`},
+sponsor(){return `<h2>كفالة مريض</h2><p class="sub">يتابع الكفيل حالة المريض بالكود فقط، دون أي بيانات تعريفية.</p>${db?"":'<div class="ban">المتابعة بالكود تتطلب فتح الصفحة بحساب Claude. تواصل مع الإدارة للحصول على الوصول.</div>'}<div class="card"><label>كود الحالة<input id="sp" placeholder="DW-0001"></label><button class="btn" onclick="sp()">متابعة الحالة</button></div><div id="spo" style="margin-top:14px"></div>`},
+plan(){return `<h2>الخطة الزمنية — 90 يومًا</h2><p class="sub">${adm?"علّم الأسابيع المنجزة لتظهر في لوحة المؤشرات.":"سجّل دخول لوحة الإدارة لتعليم الأسابيع المنجزة."}</p>${WEEKS.map((w,i)=>`${w[0]?`<div class="ph">${["الشهر الأول","الشهر الثاني","الشهر الثالث"][i/4|0]}: ${w[0]}</div>`:""}<div class="wk"><input type="checkbox" aria-label="أسبوع ${i+1}" ${S.weeks[i]?"checked":""} ${adm&&db?"":"disabled"} onchange="wk(${i},this.checked)"><div><b>الأسبوع ${i+1}: ${w[1]}</b><div class="sub" style="margin:0">${w[2]}</div></div></div>`).join("")}
+<h3 style="margin-top:24px">مؤشرات النجاح</h3><div class="card">توثيق الصرف وسلامة المصدر 100% · متابعة 90% من الأسر · مطابقة شهرية للمخزون والفواتير · 3 شراكات مبدئية · تقرير شهري وتقرير ختامي · خدمة 20–30 أسرة في أول شهر تشغيل.</div>`},
+board(){return `<h2>البورد المركزي</h2><p class="sub">ثمانية أدوار تشغيلية معتمدة.</p><div class="grid">${ROLES.map((r,i)=>`<div class="card"><h3>${i+1}. ${r[0]}</h3><span class="sub">${r[1]}</span></div>`).join("")}</div>
+<h2 style="margin-top:26px">القواعد الصارمة</h2>${RULES.map(r=>`<div class="rule">${r}</div>`).join("")}
+<h3 style="margin-top:20px">معيار التقييم</h3><div class="card">مستوى دخل الأسرة 30 · العبء المالي للعلاج 25 · أهمية الاحتياج وتوقيته 20 · العلاج المستمر أو تعدد المرضى 15 · عدم وجود مصدر بديل 10.</div>`},
+admin(){if(!adm)return `<h2>لوحة الإدارة</h2><p class="sub">أدخل كلمة السر للمتابعة.</p><div class="card" style="max-width:380px"><label>كلمة السر<input id="pw" type="password" onkeydown="if(event.key==='Enter')login()"></label><button class="btn" onclick="login()">دخول</button></div>`;
+ return `${db?"":'<div class="ban warn">لا يوجد اتصال بقاعدة البيانات. افتح الصفحة بحساب Claude المدعو للفريق ليعمل الحفظ والتحديث المباشر.</div>'}<div class="sn">${ADM.map(a=>`<button class="${a[0]===sub?"on":""}" onclick="sub='${a[0]}';render(1)">${a[1]}</button>`).join("")}<button onclick="logout()" style="margin-inline-start:auto">خروج</button></div>${A[sub]()}`}};
+const A={
+dash(){const c=S.cases,n=c.length,rec=c.filter(x=>x.stage>=4).length,fu=c.filter(x=>x.stage>=5).length,urg=c.filter(x=>x.score>=75&&x.stage<4).length;
+ const di=sum(S.don.filter(d=>d.st==="مؤكد"),d=>d.amt),ex=sum(S.exp,e=>e.amt),exn=S.inv.filter(i=>dd(i.e)<=60).length,w=Object.values(S.weeks).filter(Boolean).length;
+ const k=(v,l)=>`<div class="card kpi"><b>${v}</b>${l}</div>`;
+ return `<h2>لوحة المؤشرات</h2><p class="sub">كل الأرقام محسوبة من البيانات الحقيقية المسجلة. الأسرة تُحتسب مستفيدة بعد الاستلام الفعلي فقط.</p>
+<div class="grid">${k(n,"إجمالي الطلبات")}${k(rec,"أسر استلمت العلاج")}${k(urg,"حالات عاجلة بانتظار الإجراء")}${k(rec?Math.round(fu/rec*100)+"%":"—","متابعة بعد الصرف (الهدف 90%)")}${k(M(di),"تبرعات مؤكدة")}${k(M(ex),"مصروفات")}${k(M(di-ex),"الرصيد المتاح")}${k(S.don.filter(d=>d.st!=="مؤكد").length,"تبرعات بانتظار التأكيد")}${k(exn,"أصناف قريبة الانتهاء أو منتهية")}${k(w+"/12","أسابيع الخطة المنجزة")}</div>
+<h3 style="margin-top:22px">توزيع الحالات على المراحل</h3><div class="card">${n?STAGES.map((s,i)=>{const m=c.filter(x=>x.stage===i).length;return `<div style="display:flex;gap:10px;align-items:center;margin:6px 0"><span style="width:150px;font-size:14px">${s}</span><div class="bar" style="flex:1"><i style="width:${m/n*100}%"></i></div><b>${m}</b></div>`}).join(""):"لا توجد حالات بعد. ابدأ من «تسجيل حالة»."}</div>`},
+new(){return `<h2>استمارة تقييم حالة</h2><p class="sub">تُحسب الدرجة تلقائيًا من 100، ويُمنح الملف كودًا يُستخدم بدل الاسم في كل ما يُعرض خارج لوحة الإدارة.</p>
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))"><div class="card"><div class="row">
+<label>اسم رب الأسرة<input id="f_head"></label><label>رقم الهاتف<input id="f_ph" inputmode="tel"></label><label>العنوان<input id="f_ad"></label>
+<label>عدد أفراد الأسرة<input id="f_mem" type="number" min="1" value="4" oninput="pv()"></label><label>عدد المرضى<input id="f_pat" type="number" min="1" value="1" oninput="pv()"></label>
+<label>الدخل الشهري (جنيه)<input id="f_inc" type="number" min="0" value="0" oninput="pv()"></label><label>تكلفة العلاج الشهرية (جنيه)<input id="f_cost" type="number" min="0" value="0" oninput="pv()"></label>
+<label>درجة الاحتياج وتوقيته<select id="f_urg" onchange="pv()"><option value="20">عاجل جدًا</option><option value="14">مرتفع</option><option value="8" selected>متوسط</option></select></label>
+<label>الوضع<select id="f_chr" onchange="pv()"><option value="1">مرض مزمن</option><option value="0">احتياج مؤقت</option></select></label>
+<label>دعم من جهة أخرى<select id="f_alt" onchange="pv()"><option value="0">لا</option><option value="1">نعم</option></select></label><label>روشتة أو تقرير طبي<select id="f_rx"><option>متاح</option><option>غير متاح</option></select></label></div>
+<label>الأدوية المطلوبة (الاسم والجرعة والكمية)<textarea id="f_meds" rows="3"></textarea></label><label>ملاحظات الزيارة الميدانية<textarea id="f_notes" rows="2"></textarea></label></div>
+<div class="card"><h3>الدرجة المحسوبة</h3><div class="score" id="sc">0</div><div id="pr"></div><p class="sub" id="det"></p><button class="btn" onclick="addCase()">حفظ الحالة وإنشاء الكود</button></div></div>`},
+cases(){const c=S.cases;return `<h2>الحالات (${c.length})</h2><p class="sub">مرتبة حسب الأولوية. لا يُصرف دواء قبل المراجعة الطبية والصيدلية والاعتماد.</p>
+${c.length?[...c].sort((a,b)=>b.score-a.score).map(x=>{const p=prio(x.score),fund=sum(S.don.filter(d=>d.code===x.id&&d.st==="مؤكد"),d=>d.amt);return `<div class="card" style="margin-bottom:12px"><div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center"><b>${esc(x.id)}</b><span class="tag ${p[1]}">${p[0]}</span><span class="tag">${x.score}/100</span><span class="tag">${x.chronic?"مزمن":"مؤقت"}</span>${fund?`<span class="tag t-ok">كفالة ${M(fund)}</span>`:""}<span style="margin-inline-start:auto;font-size:13px">${esc(x.head)} · ${esc(x.phone)} · ${x.patients} مريض</span></div>
+${stepsH(x)}<div style="font-size:14px">العنوان: ${esc(x.addr)||"—"} · الأدوية: ${esc(x.meds)||"—"}</div>
+<label style="margin-top:8px">آخر تعديل طبي (يراه الكفيل)<input value="${esc(x.upd)}" onchange="cu('${x.id}',this.value)"></label>
+<button class="btn sm" onclick="adv('${x.id}')" ${x.stage>=5?"disabled":""}>${x.stage>=5?"مكتملة":"إتمام: "+STAGES[x.stage]}</button> <button class="btn alt sm" onclick="del('cases','${x.id}')">حذف</button></div>`}).join(""):empty("لا توجد حالات بعد.")}`},
+inv(){const l=[...S.inv].sort((a,b)=>a.e.localeCompare(b.e));return `<h2>سجل المخزون</h2><p class="sub">مرتب بقاعدة الأقرب انتهاءً أولًا (FEFO). لا تُقبل أدوية مجهولة المصدر أو مرتجعة.</p>
+<div class="card" style="margin-bottom:14px"><div class="row"><label>اسم الدواء<input id="i_n"></label><label>التركيز<input id="i_c"></label><label>الكمية<input id="i_q" type="number" min="1"></label><label>تاريخ الانتهاء<input id="i_e" type="date"></label><label>المصدر<select id="i_s"><option>تبرع عيني</option><option>صيدلية شريكة</option><option>شراء بفاتورة</option><option>بنك الشفاء المصري</option></select></label></div><button class="btn" onclick="addInv()">إضافة للمخزون</button></div>
+${l.length?`<div class="card tw"><table><tr><th>الدواء</th><th>الكمية</th><th>الانتهاء</th><th>المصدر</th><th>صرف</th></tr>${l.map(i=>{const d=dd(i.e),s=d<0?'<span class="tag t-u">منتهي</span>':d<=60?'<span class="tag t-h">قريب الانتهاء</span>':"";return `<tr><td>${esc(i.n)} <small>${esc(i.c)}</small></td><td>${i.q}</td><td>${i.e} ${s}</td><td>${esc(i.s)}</td><td>${d<0?`<button class="btn alt sm" onclick="del('inv','${i.id}')">إتلاف</button>`:`<input id="o${i.id}" type="number" min="1" value="1" style="width:60px"> <input id="k${i.id}" placeholder="كود الحالة" style="width:100px"> <button class="btn sm" onclick="out('${i.id}')">صرف</button>`}</td></tr>`}).join("")}</table></div>`:empty("المخزون فارغ. أضف أول صنف.")}
+${S.log.length?`<h3 style="margin-top:18px">آخر عمليات الصرف</h3><div class="card tw"><table>${[...S.log].sort((a,b)=>b.t-a.t).slice(0,8).map(x=>`<tr><td>${x.d}</td><td>${esc(x.n)}</td><td>${x.q}</td><td>${esc(x.code)||"—"}</td></tr>`).join("")}</table></div>`:""}`},
+don(){const c=CF(),d=[...S.don].sort((a,b)=>b.t-a.t);return `<h2>التبرعات</h2><p class="sub">سجّل كل تبرع يدويًا بعد التحقق منه. تُحتسب في الأرصدة بعد التأكيد فقط.</p>
+<div class="card" style="margin-bottom:14px"><div class="row"><label>اسم المتبرع<input id="n_n"></label><label>المبلغ (جنيه)<input id="n_a" type="number" min="0"></label><label>قناة الاستلام<select id="n_m">${c.pay.map(p=>`<option>${esc(p.type)}</option>`).join("")}<option>نقدًا باليد</option></select></label><label>النوع<select id="n_t"><option>تبرع عام</option><option>كفالة مريض</option><option>تبرع عيني</option></select></label><label>كود المريض (للكفالة)<input id="n_c"></label><label>مرجع التحويل أو وصف العين<input id="n_r"></label><label>التاريخ<input id="n_d" type="date" value="${day(0)}"></label><label>الحالة<select id="n_s"><option>مؤكد</option><option>بانتظار التأكيد</option></select></label></div><button class="btn" onclick="addDon()">تسجيل التبرع</button></div>
+${d.length?`<div class="card tw"><table><tr><th>التاريخ</th><th>المتبرع</th><th>المبلغ</th><th>القناة</th><th>النوع</th><th>الحالة</th><th></th></tr>${d.map(x=>`<tr><td>${x.d}</td><td>${esc(x.name)}</td><td>${M(x.amt)}</td><td>${esc(x.ch)}</td><td>${esc(x.type)} ${esc(x.code)}<br><small>${esc(x.ref)}</small></td><td><span class="tag ${x.st==="مؤكد"?"t-ok":"t-h"}">${x.st}</span></td><td>${x.st!=="مؤكد"?`<button class="btn sm" onclick="cfm('${x.id}')">تأكيد</button> `:""}<button class="btn alt sm" onclick="del('donations','${x.id}')">حذف</button></td></tr>`).join("")}</table></div>`:empty("لا توجد تبرعات مسجلة بعد.")}`},
+exp(){const e=[...S.exp].sort((a,b)=>b.t-a.t);return `<h2>المصروفات</h2><p class="sub">كل جنيه يخرج يُسجَّل بفاتورة ليُطابَق مع التبرعات والمخزون.</p>
+<div class="card" style="margin-bottom:14px"><div class="row"><label>التاريخ<input id="e_d" type="date" value="${day(0)}"></label><label>المبلغ (جنيه)<input id="e_a" type="number" min="0"></label><label>البند<select id="e_c"><option>شراء أدوية</option><option>مصروفات تشغيلية</option><option>أخرى</option></select></label><label>المورد أو الصيدلية<input id="e_s"></label><label>رقم الفاتورة<input id="e_i"></label></div><button class="btn" onclick="addExp()">تسجيل المصروف</button></div>
+${e.length?`<div class="card tw"><table><tr><th>التاريخ</th><th>المبلغ</th><th>البند</th><th>المورد</th><th>فاتورة</th><th></th></tr>${e.map(x=>`<tr><td>${x.d}</td><td>${M(x.amt)}</td><td>${esc(x.cat)}</td><td>${esc(x.sup)}</td><td>${esc(x.inv)}</td><td><button class="btn alt sm" onclick="del('expenses','${x.id}')">حذف</button></td></tr>`).join("")}</table></div>`:empty("لا توجد مصروفات مسجلة.")}`},
+pay(){const c=CF();return `<h2>الدفع والإعدادات</h2><p class="sub">ما تضيفه هنا يظهر في صفحة «تبرّع» لمن يفتح الصفحة بحساب.</p>
+<div class="card" style="margin-bottom:14px"><div class="row"><label>الوسيلة<select id="p_t">${PT.map(t=>`<option>${t}</option>`).join("")}</select></label><label>الرقم أو رقم الحساب<input id="p_n" dir="ltr"></label><label>اسم صاحب الحساب<input id="p_h"></label><label>ملاحظة<input id="p_o"></label></div><button class="btn" onclick="addPay()">إضافة وسيلة دفع</button></div>
+${c.pay.length?`<div class="card tw"><table>${c.pay.map((p,i)=>`<tr><td>${esc(p.type)}</td><td dir="ltr">${esc(p.number)}</td><td>${esc(p.holder)}</td><td>${esc(p.note)}</td><td><button class="btn alt sm" onclick="rmPay(${i})">حذف</button></td></tr>`).join("")}</table></div>`:empty("لم تُضف وسائل دفع بعد.")}
+<div class="card" style="margin-top:14px"><div class="row"><label>رقم واتساب لاستقبال الإيصالات (بصيغة دولية: 20100…)<input id="s_w" dir="ltr" value="${esc(c.wa)}"></label><label>هدف التبرعات (جنيه)<input id="s_g" type="number" min="0" value="${c.goal||""}"></label></div><button class="btn" onclick="saveS()">حفظ الإعدادات</button> <button class="btn alt" onclick="bk()">تنزيل نسخة احتياطية</button></div>
+<div class="ban" style="margin-top:14px">لكي تظهر وسائل الدفع للزوار غير المسجلين دخولًا، أرسلها لـ Claude ليثبتها في الصفحة نفسها.</div>`}};
+async function login(){const v=g("pw").value.trim().replace(/^@+|@+$/g,"");if(!crypto.subtle)return toast("المتصفح لا يدعم التحقق. افتح الصفحة عبر رابط آمن.");
+ const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(v));const h=[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");
+ if(h===HASH){adm=true;try{sessionStorage.setItem("adm","1")}catch(e){}render(1)}else toast("كلمة السر غير صحيحة")}
+function logout(){adm=false;try{sessionStorage.removeItem("adm")}catch(e){}render(1)}
+function cp(t){try{navigator.clipboard.writeText(t);toast("تم النسخ")}catch(e){toast("انسخ الرقم يدويًا")}}
+function wa(){const c=CF(),n=+g("da").value;if(!g("dn").value.trim()||!(n>0))return toast("اكتب اسمك والمبلغ");if(!c.wa)return toast("رقم الاستقبال لم يُحدد بعد. تواصل مع الإدارة.");
+ const m=`السلام عليكم، قمت بالتبرع لمشروع دوائك علينا.\nالاسم: ${g("dn").value}\nالمبلغ: ${n} جنيه\nالوسيلة: ${g("dm").value}\nالنوع: ${g("dt").value}${g("dc").value?"\nكود المريض: "+g("dc").value:""}\nمرفق إيصال التحويل.`;
+ window.open("https://wa.me/"+c.wa.replace(/\D/g,"")+"?text="+encodeURIComponent(m),"_blank")}
+function sp(){const c=S.cases.find(x=>x.id===g("sp").value.trim().toUpperCase());g("spo").innerHTML=c?`<div class="card"><h3>${esc(c.id)}</h3>${stepsH(c)}<p>الحالة: ${c.stage>=4?"استلم العلاج":"قيد الإجراء"} · ${c.chronic?"علاج مزمن":"احتياج مؤقت"}</p><p><b>آخر تعديل طبي:</b> ${esc(c.upd)||"لا توجد تعديلات"}</p></div>`:'<div class="card warn">الكود غير موجود. تأكد من كتابته كما وصلك، مثل DW-0001.</div>'}
+async function wk(i,v){await put("meta","weeks",{...S.weeks,[i]:v})}
+function fm(){return{members:+g("f_mem").value||1,patients:+g("f_pat").value||1,income:+g("f_inc").value||0,cost:+g("f_cost").value||0,urgency:+g("f_urg").value,chronic:g("f_chr").value==="1",alt:g("f_alt").value==="1"}}
+function pv(){if(!g("sc"))return;const f=fm(),s=calc(f),p=prio(s);g("sc").textContent=s+" / 100";g("pr").innerHTML=`<span class="tag ${p[1]}">أولوية ${p[0]}</span>`;g("det").textContent="نصيب الفرد من الدخل: "+Math.round(f.income/f.members)+" جنيه شهريًا"}
+async function addCase(){const f=fm(),nm=g("f_head").value.trim();if(!nm)return toast("اكتب اسم رب الأسرة");
+ const code="DW-"+String(Math.max(0,...S.cases.map(c=>+c.id.slice(3)||0))+1).padStart(4,"0");
+ if(await put("cases",code,{head:nm,phone:g("f_ph").value,addr:g("f_ad").value,...f,rx:g("f_rx").value,meds:g("f_meds").value.trim(),notes:g("f_notes").value,score:calc(f),stage:g("f_rx").value==="متاح"?1:0,upd:"",d:day(0)})){toast("تم الحفظ. الكود: "+code);sub="cases";render(1)}}
+function strip(c){const {id,...r}=c;return r}
+function adv(id){const c=S.cases.find(x=>x.id===id);put("cases",id,{...strip(c),stage:c.stage+1})}
+function cu(id,v){const c=S.cases.find(x=>x.id===id);put("cases",id,{...strip(c),upd:v})}
+async function addInv(){const n=g("i_n").value.trim(),q=+g("i_q").value,e=g("i_e").value;if(!n||q<1||!e)return toast("أكمل اسم الدواء والكمية وتاريخ الانتهاء");
+ if(dd(e)<0)return toast("لا يُقبل صنف منتهي الصلاحية");if(await put("inv",nid(),{n,c:g("i_c").value,q,e,s:g("i_s").value}))render(1)}
+async function out(id){const i=S.inv.find(x=>x.id===id),q=+g("o"+id).value,code=g("k"+id).value.trim().toUpperCase();if(q<1||q>i.q)return toast("الكمية غير صحيحة أو أكبر من المتاح");
+ if(code&&!S.cases.some(c=>c.id===code))return toast("كود الحالة غير موجود");
+ if(await put("log",nid(),{d:day(0),t:Date.now(),n:i.n,q,code})){if(q===i.q)await db.collection("inv").doc(id).delete();else await put("inv",id,{...strip(i),q:i.q-q});toast("تم تسجيل الصرف")}}
+async function addDon(){const a=+g("n_a").value,nm=g("n_n").value.trim(),code=g("n_c").value.trim().toUpperCase();if(!nm||!(a>0||g("n_t").value==="تبرع عيني"))return toast("اكتب اسم المتبرع والمبلغ");
+ if(code&&!S.cases.some(c=>c.id===code))return toast("كود المريض غير موجود");
+ if(await put("donations",nid(),{name:nm,amt:a,ch:g("n_m").value,type:g("n_t").value,code,ref:g("n_r").value,d:g("n_d").value,st:g("n_s").value,t:Date.now()}))toast("تم تسجيل التبرع")}
+function cfm(id){const x=S.don.find(d=>d.id===id);put("donations",id,{...strip(x),st:"مؤكد"})}
+async function addExp(){const a=+g("e_a").value;if(!(a>0))return toast("اكتب مبلغ المصروف");if(await put("expenses",nid(),{d:g("e_d").value,amt:a,cat:g("e_c").value,sup:g("e_s").value,inv:g("e_i").value,t:Date.now()}))toast("تم تسجيل المصروف")}
+function addPay(){const n=g("p_n").value.trim();if(!n)return toast("اكتب الرقم أو رقم الحساب");setCfg({pay:[...CF().pay,{type:g("p_t").value,number:n,holder:g("p_h").value,note:g("p_o").value}]})}
+function rmPay(i){setCfg({pay:CF().pay.filter((_,k)=>k!==i)})}
+async function saveS(){if(await setCfg({wa:g("s_w").value.trim(),goal:+g("s_g").value||0,pay:CF().pay}))toast("تم حفظ الإعدادات")}
+async function bk(){try{const d=await window.claude.use("downloads");await d.save({filename:"dawaak-backup-"+day(0)+".json",data:JSON.stringify(S,null,1)})}catch(e){toast("تعذّر تنزيل النسخة")}}
+init();
+</script>
+</body>
+</html>
