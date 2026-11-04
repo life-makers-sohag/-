@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دوائك علينا — صناع الحياة سوهاج</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap">
+<style>
+:root{--navy:#034572;--navy2:#0A5A92;--gold:#F5AE45;--bg:#F4F6F9;--card:#fff;--ink:#12263A;--mute:#5A6B7B;--line:#E1E7ED;--ok:#1E8A5A;--bad:#C2413B;--sh:0 1px 2px rgba(3,69,114,.06),0 8px 24px rgba(3,69,114,.07);--r:16px;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1722;--card:#12263A;--ink:#EAF0F5;--mute:#9DB0C1;--line:#24405A;--navy:#0A5A92;--navy2:#1573B8;--sh:none;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0B1722;--card:#12263A;--ink:#EAF0F5;--mute:#9DB0C1;--line:#24405A;--navy:#0A5A92;--navy2:#1573B8;--sh:none;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:calc(120px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.75 Cairo,Tahoma,sans-serif;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--navy);z-index:10}
+.skip{position:absolute;inset-inline-start:12px;top:-60px;background:var(--gold);color:#1b1b1b;padding:8px 14px;border-radius:8px;z-index:30;font-weight:700}.skip:focus{top:8px}
+header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:12px 20px 0;position:sticky;top:env(safe-area-inset-top,0px);z-index:9;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.hd{max-width:1120px;margin:0 auto}.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:21px}
+.mark{position:relative;width:38px;height:26px;flex:none}.mark i{position:absolute;top:0;width:26px;height:26px;border-radius:50%}.mark i:first-child{inset-inline-start:0;background:#fff}.mark i:last-child{inset-inline-start:12px;background:var(--gold);mix-blend-mode:normal;opacity:.95}
+.brand small{font-weight:400;opacity:.8;font-size:12px;display:block;line-height:1.2}
+.pill{margin-inline-start:auto;font-size:12px;background:#ffffff22;border-radius:99px;padding:3px 12px;display:inline-flex;gap:7px;align-items:center;white-space:nowrap}
+.pill:before{content:"";width:8px;height:8px;border-radius:50%;background:#bbb}.pill.on:before{background:#4ADE80}.pill.err:before{background:#F87171}.pill.wait:before{background:var(--gold);animation:pl 1s infinite}
+@keyframes pl{50%{opacity:.3}}
+nav{display:flex;gap:4px;overflow-x:auto;margin-top:10px;scrollbar-width:none}nav::-webkit-scrollbar{display:none}
+nav button{background:none;border:0;color:#fff;opacity:.78;font:600 14px Cairo;padding:10px 15px;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:.15s}
+nav button:hover{opacity:1}nav button.on{opacity:1;border-color:var(--gold)}
+main{max-width:1120px;margin:0 auto;padding:22px 20px 10px;min-height:70vh}
+.fx{animation:fx .3s ease}@keyframes fx{from{opacity:0;transform:translateY(8px)}}
+h2{display:flex;align-items:center;gap:10px;margin:30px 0 6px;font-size:23px;color:var(--navy);line-height:1.4}
+h2:before{content:"";width:7px;height:24px;border-radius:4px;background:var(--gold);flex:none}main>h2:first-child{margin-top:4px}
+@media(prefers-color-scheme:dark){h2{color:#fff}}
+h3{margin:0 0 6px;font-size:17px}.sub{color:var(--mute);margin:0 0 18px;font-size:15px}
+.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:22px;padding:42px 32px;margin-bottom:8px;position:relative;overflow:hidden;box-shadow:var(--sh)}
+.hero>*{position:relative;z-index:1}.hero:before,.hero:after{content:"";position:absolute;border-radius:50%}
+.hero:before{width:280px;height:280px;background:#ffffff14;inset-inline-end:-80px;top:-100px}.hero:after{width:170px;height:170px;background:var(--gold);inset-inline-end:70px;bottom:-70px;opacity:.95}
+.hero h1{font-size:clamp(34px,7vw,58px);margin:0 0 6px;font-weight:800;line-height:1.2}
+.hero p{max-width:600px;opacity:.92;margin:10px 0 22px;font-size:17px}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.stats div{background:#ffffff1f;border-radius:14px;padding:10px 18px;min-width:120px;font-size:13px}.stats b{display:block;font-size:24px;line-height:1.3}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--sh)}
+.hv{transition:.2s}.hv:hover{transform:translateY(-3px)}
+.num{width:36px;height:36px;border-radius:50%;background:var(--gold);color:#1b1b1b;display:grid;place-items:center;font-weight:800;margin-bottom:10px}
+.kpi{position:relative;overflow:hidden;padding-inline-start:24px}.kpi:before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:6px;background:var(--navy2)}.kpi.g:before{background:var(--gold)}.kpi.r:before{background:var(--bad)}.kpi.k:before{background:var(--ok)}
+.kpi b{display:block;font-size:30px;color:var(--navy);line-height:1.3}@media(prefers-color-scheme:dark){.kpi b{color:var(--gold)}}.kpi span{color:var(--mute);font-size:14px}
+.btn{background:var(--gold);color:#1b1b1b;border:0;border-radius:10px;padding:9px 20px;min-height:42px;font:700 15px Cairo;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none}
+.btn:hover{filter:brightness(.95);transform:translateY(-1px)}.btn:active{transform:none}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.btn.alt{background:transparent;border:1.5px solid var(--navy);color:var(--navy)}.btn.ghost{background:#ffffff1f;color:#fff;border:1.5px solid #fff8}
+@media(prefers-color-scheme:dark){.btn.alt{border-color:var(--gold);color:var(--gold)}}
+.btn.sm{padding:3px 14px;min-height:34px;font-size:13px}body.busy .btn{opacity:.55;pointer-events:none}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+label{display:block;font-size:14px;font-weight:600;color:var(--mute);margin-bottom:12px}
+input,select,textarea{width:100%;min-height:44px;padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:400 16px Cairo;margin-top:4px;transition:.15s}
+input:focus,select:focus,textarea:focus{border-color:var(--navy2);box-shadow:0 0 0 3px #F5AE4559;outline:none}
+input[type=number],input[type=tel],input[dir=ltr]{direction:ltr;text-align:right}input[type=checkbox]{width:22px;min-height:22px}
+.bad{border-color:var(--bad)!important;box-shadow:0 0 0 3px #C2413B33!important}
+.row{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}
+.bar2{display:grid;gap:10px;grid-template-columns:2fr 1fr;margin-bottom:14px}@media(max-width:560px){.bar2{grid-template-columns:1fr}}
+.tag{display:inline-block;padding:1px 11px;border-radius:99px;font-size:12px;font-weight:700;background:var(--line);color:var(--ink);white-space:nowrap}
+.t-u{background:var(--bad);color:#fff}.t-h{background:var(--gold);color:#1b1b1b}.t-ok{background:var(--ok);color:#fff}
+.tw{overflow-x:auto;padding:0}table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+th,td{padding:11px 14px;text-align:start;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--mute);font-weight:600;background:var(--bg)}tr:last-child td{border:0}
+.steps{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.st{flex:1;min-width:104px;padding:6px 8px;border-radius:99px;background:var(--line);font-size:12px;text-align:center;color:var(--mute)}
+.st.d{background:var(--navy2);color:#fff}.st.d:before{content:"✓ "}.st.c{background:var(--gold);color:#1b1b1b;font-weight:700}
+.case{margin-bottom:14px}.ch{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.ch .who{margin-inline-start:auto;font-size:13px;color:var(--mute)}.ch b{font-size:18px}
+.bar{height:10px;border-radius:5px;background:var(--line);overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),#f8c779);border-radius:5px}
+.sn{display:flex;gap:6px;overflow-x:auto;margin-bottom:18px;padding-bottom:4px}.sn button{background:var(--card);border:1.5px solid var(--line);color:var(--ink);border-radius:99px;padding:6px 16px;font:600 14px Cairo;cursor:pointer;white-space:nowrap}
+.sn button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.todo{display:flex;gap:10px;align-items:center;width:100%;text-align:start;background:none;border:0;border-bottom:1px solid var(--line);padding:11px 4px;font:400 15px Cairo;color:var(--ink);cursor:pointer}.todo:last-child{border:0}.todo:hover{background:var(--bg)}
+.wk{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}.wk input{margin-top:5px;accent-color:var(--navy)}
+.ph{font-weight:800;color:var(--navy);margin:22px 0 4px;font-size:18px}@media(prefers-color-scheme:dark){.ph{color:var(--gold)}}
+.score{font-size:46px;font-weight:800;color:var(--navy);line-height:1.2}@media(prefers-color-scheme:dark){.score{color:var(--gold)}}
+.sticky{position:sticky;top:140px;align-self:start}
+.rule{border-inline-start:4px solid var(--gold);padding:8px 14px;margin:8px 0;background:var(--card);border-radius:0 10px 10px 0}
+.pm b{font-size:21px;direction:ltr;display:inline-block;color:var(--navy)}@media(prefers-color-scheme:dark){.pm b{color:var(--gold)}}
+.ban{background:var(--card);border:1.5px dashed var(--gold);border-radius:12px;padding:12px 16px;margin-bottom:16px;font-size:14px}.warn{color:var(--bad);font-weight:700}
+.empty{text-align:center;padding:34px 18px;color:var(--mute)}
+.sk{height:96px;border-radius:var(--r);background:linear-gradient(90deg,var(--line),transparent,var(--line));background-size:200% 100%;animation:sh 1.2s infinite;margin-bottom:14px}@keyframes sh{to{background-position:-200% 0}}
+.toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));inset-inline:16px;max-width:380px;margin:auto;background:var(--navy);color:#fff;padding:13px 18px;border-radius:12px;display:none;text-align:center;z-index:40;box-shadow:0 8px 30px rgba(0,0,0,.3)}.toast.err{background:var(--bad)}.toast.ok{background:var(--ok)}
+.mod{position:fixed;inset:0;background:#0009;display:flex;align-items:center;justify-content:center;z-index:50;padding:20px}.mod>div{background:var(--card);border-radius:18px;padding:24px;max-width:380px;width:100%;box-shadow:0 20px 60px #0006}
+footer{max-width:1120px;margin:30px auto 0;padding:18px 20px calc(18px + env(safe-area-inset-bottom,0px));color:var(--mute);font-size:13px;text-align:center;border-top:1px solid var(--line)}
+@media(max-width:640px){main{padding:16px 14px 6px}header{padding:10px 14px 0}.brand{font-size:18px}.hero{padding:30px 20px;border-radius:18px}.hero:after{width:110px;height:110px;inset-inline-end:20px}h2{font-size:20px}.sticky{position:static}.brand small{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#app">تخطَّ إلى المحتوى</a>
+<header><div class="hd">
+ <div class="brand"><span class="mark" aria-hidden="true"><i></i><i></i></span><div>دوائك علينا<small>مؤسسة صناع الحياة · سوهاج</small></div><span id="st" class="pill wait" role="status">جارٍ الاتصال…</span></div>
+ <nav id="nav" aria-label="التنقل الرئيسي"></nav>
+</div></header>
+<main id="app"><div class="sk"></div><div class="sk"></div><div class="sk"></div></main>
+<footer>مؤسسة صناع الحياة · سوهاج — مشروع «دوائك علينا». بيانات الأسر ومعلوماتهم الطبية سرية ولا تُنشر.</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+const HASH="91eb1c90926cbb68cb8fc06045778c79bf2f2620ace26853486dfa0b4da73b7b";
+const PUBLIC={pay:[],wa:"",goal:0};
+const TABS=[["home","الرئيسية"],["donate","تبرّع"],["sponsor","كفالة مريض"],["plan","الخطة الزمنية"],["board","البورد والقواعد"],["admin","🔒 لوحة الإدارة"]];
+const ADM=[["dash","المؤشرات"],["new","تسجيل حالة"],["cases","الحالات"],["inv","المخزون"],["don","التبرعات"],["exp","المصروفات"],["pay","الدفع والإعدادات"]];
+const STAGES=["تسجيل الطلب","مراجعة الاستحقاق","مراجعة طبية وصيدلية","اعتماد","صرف العلاج","متابعة"];
+const PT=["فودافون كاش","إنستاباي","حساب بنكي","محفظة إلكترونية أخرى","تحصيل نقدي بالمقر"];
+const WEEKS=[["التأسيس والتجهيز","تشكيل فريق العمل","اختيار المسؤولين وتحديد المركز المستهدف واجتماع توزيع المهام"],["","حصر الأسر والاحتياجات","استمارة موحدة، توثيق المستندات الطبية، كود لكل أسرة"],["","قواعد الاستحقاق والأولوية","نظام 100 درجة، آلية التظلم وإعادة التقييم"],["","مصادر الأدوية والمخزون","سجل المخزون، شراكات الصيدليات وبنك الشفاء المصري"],["التشغيل التجريبي","استقبال الطلبات","رقم لكل طلب وتصنيفه، مراجعة خلال 3–5 أيام عمل"],["","مراجعة الحالات واعتمادها","مراجعة صيدلية، تحديد التكلفة ومصدر التمويل"],["","توفير العلاج وصرفه","قائمة صرف أسبوعية، فواتير، إثبات استلام يحفظ الكرامة"],["","المتابعة وتقييم التجربة","متابعة بعد الصرف وتقرير الشهر الثاني"],["التوسع والاستدامة","التوسع التدريجي","أسر ومراكز إضافية دون المساس بالحالات المزمنة"],["","الشراكات والتبرعات","ملف تعريفي، برنامج «كفالة مريض»، ضم الصيادلة والأطباء"],["","مراجعة الأداء","أسباب عدم التوفير، المخزون والموردين، تحديث القواعد"],["","التقييم النهائي وخطة الاستمرار","تقرير الـ 90 يومًا وخطة الـ 3 شهور التالية"]];
+const ROLES=[["مسؤول المشروع","التنسيق مع الإدارة · الاجتماعات الدورية · إدارة المخاطر · التقارير · اعتماد قوائم الصرف"],["نائب مسؤول المشروع","متابعة التشغيل اليومي · التنسيق مع المراكز · النيابة الإدارية · جودة الإجراءات"],["مسؤول الشراكات والعلاقات الخارجية","الصيدليات والشركات والموزعون · الملف التعريفي · اتفاقيات التعاون · التبرعات عبر القنوات الرسمية"],["مسؤول النظم والمعلومات والتتبع","قاعدة البيانات · الأكواد والسرية · نماذج التسجيل · ربط البيانات ومتابعة الكفيل"],["مسؤول الأبحاث وإدارة الحالة","تحديث البيانات · معيار الـ 100 درجة · التوثيق المستندي · التظلمات"],["مسؤول الكفالات الصحية","حصر الحالات المزمنة · استمرارية الدعم · المتابعة بعد الصرف"],["مسؤول جرد الأدوية والرقابة الدوائية","التصنيف الميداني · مراجعة الروشتات · سجل المخزون · الصلاحيات وFEFO · رصد العجز"],["مسؤول التنفيذ والتسويات","خطط الصرف · سلامة التسليم والحالات العاجلة · تسوية الفواتير · مطابقة التبرعات"]];
+const RULES=["لا يُصرف أي دواء دون تسجيل واعتماد وتوثيق.","لا تُصرف الأدوية إلا بعد مراجعة المختص.","لا تُقبل أدوية مجهولة المصدر أو منتهية الصلاحية أو مرتجعة.","لا تُحدد الأولوية بالمجاملات أو المعرفة الشخصية.","لا تُنشر بيانات الأسر أو تفاصيل أمراضها في المجموعات العامة.","لا تُعد الأسرة مستفيدة إلا بعد استلام العلاج فعليًا.","لا يُستبدل دواء بآخر دون مراجعة مهنية.","تُوجَّه الحالات الطارئة فورًا إلى الرعاية المناسبة."];
+const day=n=>new Date(Date.now()+n*864e5).toISOString().slice(0,10);
+const dd=d=>Math.round((new Date(d)-new Date(day(0)))/864e5);
+const M=n=>Number(n||0).toLocaleString("ar-EG")+" جنيه";
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const g=id=>document.getElementById(id);
+const nid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+const sum=(a,f)=>a.reduce((x,y)=>x+(+f(y)||0),0);
+let mcp=null,live=false,err=null,ready=false,adm=false,tab="home",sub="dash",pend=false;
+let S={cases:[],inv:[],don:[],exp:[],log:[],pay:[],cfg:{},weeks:{}};
+try{adm=sessionStorage.getItem("adm")==="1"}catch(e){}
+{const h=location.hash.slice(1);if(TABS.some(t=>t[0]===h))tab=h}
+const CF=()=>({pay:S.pay.length?S.pay:PUBLIC.pay,wa:S.cfg.wa||PUBLIC.wa,goal:S.cfg.goal||PUBLIC.goal});
+const toast=(m,k)=>{const t=g("toast");t.textContent=m;t.className="toast "+(k||"");t.style.display="block";clearTimeout(toast.t);toast.t=setTimeout(()=>t.style.display="none",3400)};
+const prio=s=>s>=75?["عاجلة جدًا","t-u"]:s>=55?["مرتفعة","t-h"]:["متوسطة",""];
+const SID="1N7zRvG20J-EZbStSgInZqBZextr5iIHcIP5rxChi-Ao",SV="Google Sheets";
+const UR={"عاجل جدًا":20,"مرتفع":14,"متوسط":8},URN={20:"عاجل جدًا",14:"مرتفع",8:"متوسط"};
+const dg=x=>String(x??"").replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d)).replace(/[٬،,]/g,"").trim();
+const nm=x=>+dg(x)||0;
+const nd=x=>{x=dg(x).replace(/\s.*$/,"");let m=x.match(/^(\d{4})[-\/.](\d{1,2})[-\/.](\d{1,2})$/);if(m)return m[1]+"-"+m[2].padStart(2,"0")+"-"+m[3].padStart(2,"0");m=x.match(/^(\d{1,2})[-\/.](\d{1,2})[-\/.](\d{4})$/);return m?m[3]+"-"+m[2].padStart(2,"0")+"-"+m[1].padStart(2,"0"):x};
+const T={
+cases:{n:"الحالات",f:18,d:r=>{const o={id:(r[0]||"").toUpperCase(),head:r[1]||"",phone:r[2]||"",addr:r[3]||"",members:nm(r[4])||1,patients:nm(r[5])||1,income:nm(r[6]),cost:nm(r[7]),urgency:UR[r[8]]||8,chronic:r[9]!=="مؤقت",alt:r[10]==="نعم",rx:r[11]||"",meds:r[12]||"",notes:r[13]||"",stage:Math.max(0,STAGES.indexOf(r[15])),upd:r[16]||"",d:nd(r[17])};o.score=calc(o);return o},
+ e:o=>[o.id,o.head,o.phone,o.addr,o.members,o.patients,o.income,o.cost,URN[o.urgency]||"متوسط",o.chronic?"مزمن":"مؤقت",o.alt?"نعم":"لا",o.rx,o.meds,o.notes,calc(o),STAGES[o.stage]||STAGES[0],o.upd,o.d]},
+inv:{n:"المخزون",f:6,d:r=>({id:r[0]||"",n:r[1]||"",c:r[2]||"",q:nm(r[3]),e:nd(r[4]),s:r[5]||""}),e:o=>[o.id,o.n,o.c,o.q,o.e,o.s]},
+don:{n:"التبرعات",f:9,d:r=>({id:r[0]||"",d:nd(r[1]),name:r[2]||"",amt:nm(r[3]),ch:r[4]||"",type:r[5]||"",code:(r[6]||"").toUpperCase(),ref:r[7]||"",st:r[8]||"بانتظار التأكيد"}),e:o=>[o.id,o.d,o.name,o.amt,o.ch,o.type,o.code,o.ref,o.st]},
+exp:{n:"المصروفات",f:6,d:r=>({id:r[0]||"",d:nd(r[1]),amt:nm(r[2]),cat:r[3]||"",sup:r[4]||"",inv:r[5]||""}),e:o=>[o.id,o.d,o.amt,o.cat,o.sup,o.inv]},
+log:{n:"الصرف",f:5,d:r=>({id:r[0]||"",d:nd(r[1]),n:r[2]||"",q:nm(r[3]),code:(r[4]||"").toUpperCase()}),e:o=>[o.id,o.d,o.n,o.q,o.code]},
+pay:{n:"وسائل الدفع",f:5,d:r=>({id:r[0]||"",type:r[1]||"",number:r[2]||"",holder:r[3]||"",note:r[4]||""}),e:o=>[o.id,o.type,o.number,o.holder,o.note]},
+cfg:{n:"الإعدادات",f:2}};
+const rng=k=>`'${T[k].n}'!A:Z`;
+const rowsOf=res=>{const v=res&&res.payload&&Array.isArray(res.payload.values)?res.payload.values:[];return{raw:Math.max(0,v.length-1),rows:v.slice(1).filter(r=>r.some(c=>String(c||"").trim()))}};
+function parseCfg(rows){const v=k=>((rows.find(r=>r[0]===k)||[])[1]||"");const w={};dg(v("الأسابيع المنجزة")).split(/[,;]/).forEach(x=>{if(+x)w[+x-1]=true});return{wa:String(v("واتساب")).replace(/\D/g,""),goal:nm(v("الهدف")),weeks:w}}
+function setS(k,rows){if(k==="cfg"){const c=parseCfg(rows);S.cfg={wa:c.wa,goal:c.goal};S.weeks=c.weeks}else S[k]=rows.map((r,i)=>{const o=T[k].d(r);if(!o.id)o.id="_"+i;return o})}
+const conn=()=>!mcp?"افتح الصفحة داخل Claude بحساب مربوط بموصّل Google Sheets ليعمل الحفظ والتحديث من الشيت.":err?errMsg(err):"جارٍ الاتصال بالشيت…";
+function errMsg(e){const c=e&&e.code;return c==="server_not_connected"?"موصّل Google Sheets غير مضاف في حسابك. أضفه من إعدادات Claude ثم أعد فتح الصفحة.":c==="needs_reauth"?"انتهت صلاحية ربط Google Sheets. أعد ربطه من إعدادات Claude.":c==="not_in_manifest"||c==="approval_required"?"لم تتم الموافقة على وصول الصفحة إلى Google Sheets.":c==="blocked_by_policy"?"سياسة مؤسستك تمنع هذا الموصّل.":"تعذّر الاتصال بالشيت: "+((e&&e.message)||"خطأ غير معروف")}
+async function init(){
+ try{mcp=await window.claude.use("mcp")}catch(e){mcp=null}
+ ready=true;
+ if(mcp)for(const k of Object.keys(T))mcp.watchTool(SV,"get_values",{spreadsheetId:SID,range:rng(k)},ev=>{if(ev.type==="data"){const j=JSON.stringify(ev.result.payload&&ev.result.payload.values);lastSync=(ev.result.cache&&ev.result.cache.storedAt)||Date.now();const was=live;live=true;err=null;if(sig[k]===j&&was){pill();return}sig[k]=j;setS(k,rowsOf(ev.result).rows)}else err=ev.error;render()},{refetchInterval:30000});
+ render(1)}
+async function rd(k){const r=await mcp.callTool(SV,"get_values",{spreadsheetId:SID,range:rng(k)},{cache:{refresh:true}});const x=rowsOf(r);return{raw:x.raw,rows:x.rows}}
+const sv=v=>v==null?"":String(v);
+const fixIds=(k,it)=>{let n=Math.max(0,...it.map(x=>+((x.id||"").match(/^DW-(\d+)$/)||[0,0])[1]));return it.map(x=>(!x.id||x.id[0]==="_")?{...x,id:k==="cases"?"DW-"+String(++n).padStart(4,"0"):nid()}:x)}
+const fail=e=>{toast(e&&e.code==="write_refused"?e.message:errMsg(e),"err")};
+async function mut(k,fn){
+ if(!mcp){toast(conn());return false}
+ try{bz(1);const f=await rd(k);let it=f.rows.map((r,i)=>{const o=T[k].d(r);if(!o.id)o.id="_"+i;return o});
+  it=fixIds(k,fn(it));const out=it.map(o=>T[k].e(o).map(sv));while(out.length<f.raw)out.push(Array(T[k].f).fill(""));
+  if(out.length)await mcp.callTool(SV,"update_values",{spreadsheetId:SID,range:`'${T[k].n}'!A2`,values:out});
+  S[k]=it;lastSync=Date.now();if(mcp.invalidate)mcp.invalidate(SV,"get_values").catch(()=>{});render(1);return true
+ }catch(e){fail(e);return false}finally{bz(0)}}
+async function mutCfg(p){
+ if(!mcp){toast(conn());return false}
+ try{bz(1);const f=await rd("cfg"),c={...parseCfg(f.rows),...p};
+  await mcp.callTool(SV,"update_values",{spreadsheetId:SID,range:"'الإعدادات'!A2",values:[["واتساب",sv(c.wa)],["الهدف",sv(c.goal||"")],["الأسابيع المنجزة",Object.keys(c.weeks).filter(i=>c.weeks[i]).map(i=>+i+1).join(",")]]});
+  S.cfg={wa:c.wa,goal:c.goal};S.weeks=c.weeks;render(1);return true
+ }catch(e){fail(e);return false}finally{bz(0)}}
+const up=(k,o)=>mut(k,it=>{const i=it.findIndex(x=>x.id===o.id);if(i<0)it.push(o);else it[i]=o;return it});
+async function del(c,id){const k={donations:"don",expenses:"exp"}[c]||c;if(await ask("تأكيد الحذف؟ لا يمكن التراجع."))mut(k,it=>it.filter(x=>x.id!==id))}
+function nav(){g("nav").innerHTML=TABS.map(t=>`<button class="${t[0]===tab?"on":""}" ${t[0]===tab?'aria-current="page"':""} onclick="go('${t[0]}')">${t[1]}</button>`).join("")}
+function go(t){tab=t;location.hash=t;render(1);scrollTo(0,0)}
+function render(f){const a=document.activeElement;
+ if(!f&&a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName)&&a.closest("#app")){pend=true;return}
+ pend=false;nav();pill();if(!ready)return;const ap=g("app");ap.innerHTML=V[tab]()+"";if(f){ap.classList.remove("fx");void ap.offsetWidth;ap.classList.add("fx")}if(tab==="admin"&&adm&&sub==="new")pv()}
+document.addEventListener("focusout",()=>setTimeout(()=>{if(pend&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName))render(1)},250));
+addEventListener("hashchange",()=>{const t=location.hash.slice(1);if(V[t]&&t!==tab){tab=t;render(1)}});
+function calc(f){const pc=f.income/Math.max(f.members,1);
+ const a=f.income<=0?30:pc<300?30:pc<600?22:pc<1000?14:6;
+ const r=f.income<=0?1:f.cost/f.income;const b=r>=.5?25:r>=.3?18:r>=.15?10:4;
+ return a+b+f.urgency+Math.min(15,(f.chronic?10:3)+(f.patients>1?5:0))+(f.alt?0:10)}
+const empty=t=>`<div class="card empty">${t}</div>`;
+const stepsH=x=>`<div class="steps">${STAGES.map((s,i)=>`<div class="st ${i<x.stage?"d":i===x.stage?"c":""}">${s}</div>`).join("")}</div>`;
+const V={
+home(){const n=S.cases.length,rec=S.cases.filter(x=>x.stage>=4).length,di=sum(S.don.filter(d=>d.st==="مؤكد"),d=>d.amt);
+ return `<section class="hero"><h1>دوائك علينا</h1><p>منظومة خيرية متكاملة لتوفير العلاج للأسر المستحقة بحسب احتياجها الفعلي: تسجيل الحالات، تحديد الأولويات، توفير الدواء من مصادر آمنة، ومتابعة الصرف والتبرعات خلال 90 يومًا.</p><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" onclick="go('donate')">تبرّع الآن</button><button class="btn ghost" onclick="go('sponsor')">تابع كفالتك</button></div>${live?`<div class="stats"><div><b>${n}</b>طلب مسجل</div><div><b>${rec}</b>أسرة استلمت العلاج</div><div><b>${M(di)}</b>تبرعات مؤكدة</div></div>`:""}</section>
+<h2>كيف يعمل النظام</h2><p class="sub">كل طلب يمر بالمسار نفسه من التسجيل حتى المتابعة.</p>
+<div class="grid">${STAGES.map((s,i)=>`<div class="card hv"><span class="num">${i+1}</span><h3>${s}</h3><span class="sub" style="margin:0">${["استقبال بيانات الأسرة واحتياجها","تحديد الأحقية والأولوية","التأكد من الوصفة والدواء المناسب","تحديد الكمية والتكلفة والتمويل","من مصدر مرخص مع توثيق التسليم","التأكد من الاستلام وتحديث الاحتياجات"][i]}</span></div>`).join("")}</div>
+<h2>أهداف المشروع</h2><div class="grid">${["توفير العلاج للأسر المستحقة وتخفيف العبء المادي","استمرارية العلاج لأصحاب الأمراض المزمنة","قاعدة بيانات متكاملة للأسر واحتياجاتها الدوائية","شراكات مع الصيدليات وشركات الأدوية والمتبرعين","سلامة الأدوية وصحة الصرف عبر متطوعين متخصصين","نظام شفاف وموثق للتبرعات والمخزون والصرف"].map(x=>`<div class="card hv">${x}</div>`).join("")}</div>
+<h2>التزاماتنا</h2>${RULES.slice(0,6).map(r=>`<div class="rule">${r}</div>`).join("")}`},
+donate(){const c=CF(),tot=sum(S.don.filter(d=>d.st==="مؤكد"),d=>d.amt);
+ return `<h2>تبرّع لمشروع دوائك علينا</h2><p class="sub">كل تبرع يُسجَّل ويُوثَّق ويُصرف على الأدوية فقط، عبر القنوات الرسمية للجمعية.</p>
+${live&&c.goal?`<div class="card" style="margin-bottom:14px"><b>${M(tot)}</b> من هدف ${M(c.goal)}<div class="bar" style="margin-top:8px"><i style="width:${Math.min(100,tot/c.goal*100)}%"></i></div></div>`:""}
+<div class="grid" style="margin-bottom:6px"><div class="card"><span class="num">1</span><b>حوّل المبلغ</b><div class="sub" style="margin:0">عبر إحدى الوسائل أدناه.</div></div><div class="card"><span class="num">2</span><b>أرسل الإيصال</b><div class="sub" style="margin:0">عبر واتساب بالنموذج الظاهر بعد الوسائل.</div></div><div class="card"><span class="num">3</span><b>نؤكد استلامه</b><div class="sub" style="margin:0">ويُسجَّل تبرعك رسميًا ويُصرف على الأدوية.</div></div></div><h3 style="margin-top:20px">وسائل التحويل</h3>${c.pay.length?`<div class="grid">${c.pay.map(p=>`<div class="card pm"><span class="tag">${esc(p.type)}</span><div style="margin:6px 0"><b>${esc(p.number)}</b></div><div>${esc(p.holder)}</div><div class="sub" style="margin:0">${esc(p.note)}</div><button class="btn alt sm" style="margin-top:8px" onclick="cp('${esc(p.number)}')">نسخ الرقم</button></div>`).join("")}</div>`:empty("سيُعلَن عن وسائل التبرع هنا قريبًا.")}
+<h3 style="margin-top:22px">بعد التحويل</h3><div class="card"><div class="row"><label>اسمك<input id="dn"></label><label>المبلغ (جنيه)<input id="da" type="number" min="1"></label><label>وسيلة التحويل<select id="dm">${c.pay.map(p=>`<option>${esc(p.type)}</option>`).join("")||"<option>أخرى</option>"}</select></label><label>نوع التبرع<select id="dt"><option>تبرع عام للمشروع</option><option>كفالة مريض</option><option>تبرع عيني (أدوية)</option></select></label><label>كود المريض (للكفالة)<input id="dc" placeholder="DW-0001"></label></div>
+<button class="btn" onclick="wa()">أرسل الإيصال عبر واتساب</button> <span class="sub">سيصل طلبك للإدارة وتؤكد استلام التبرع.</span></div>`},
+sponsor(){return `<h2>كفالة مريض</h2><p class="sub">يتابع الكفيل حالة المريض بالكود فقط، دون أي بيانات تعريفية.</p>${live?"":'<div class="ban">المتابعة بالكود تتطلب ربط حساب Google Sheets. تواصل مع الإدارة.</div>'}<div class="card"><label>كود الحالة<input id="sp" placeholder="DW-0001"></label><button class="btn" onclick="sp()">متابعة الحالة</button></div><div id="spo" style="margin-top:14px"></div>`},
+plan(){return `<h2>الخطة الزمنية — 90 يومًا</h2><p class="sub">${adm?"علّم الأسابيع المنجزة لتظهر في لوحة المؤشرات.":"سجّل دخول لوحة الإدارة لتعليم الأسابيع المنجزة."}</p>${WEEKS.map((w,i)=>`${w[0]?`<div class="ph">${["الشهر الأول","الشهر الثاني","الشهر الثالث"][i/4|0]}: ${w[0]}</div>`:""}<div class="wk"><input type="checkbox" aria-label="أسبوع ${i+1}" ${S.weeks[i]?"checked":""} ${adm&&live?"":"disabled"} onchange="wk(${i},this.checked)"><div><b>الأسبوع ${i+1}: ${w[1]}</b><div class="sub" style="margin:0">${w[2]}</div></div></div>`).join("")}
+<h3 style="margin-top:24px">مؤشرات النجاح</h3><div class="card">توثيق الصرف وسلامة المصدر 100% · متابعة 90% من الأسر · مطابقة شهرية للمخزون والفواتير · 3 شراكات مبدئية · تقرير شهري وتقرير ختامي · خدمة 20–30 أسرة في أول شهر تشغيل.</div>`},
+board(){return `<h2>البورد المركزي</h2><p class="sub">ثمانية أدوار تشغيلية معتمدة.</p><div class="grid">${ROLES.map((r,i)=>`<div class="card"><h3>${i+1}. ${r[0]}</h3><span class="sub">${r[1]}</span></div>`).join("")}</div>
+<h2 style="margin-top:26px">القواعد الصارمة</h2>${RULES.map(r=>`<div class="rule">${r}</div>`).join("")}
+<h3 style="margin-top:20px">معيار التقييم</h3><div class="card">مستوى دخل الأسرة 30 · العبء المالي للعلاج 25 · أهمية الاحتياج وتوقيته 20 · العلاج المستمر أو تعدد المرضى 15 · عدم وجود مصدر بديل 10.</div>`},
+admin(){if(!adm)return `<h2>لوحة الإدارة</h2><p class="sub">أدخل كلمة السر للمتابعة.</p><div class="card" style="max-width:380px"><label>كلمة السر<input id="pw" type="password" onkeydown="if(event.key==='Enter')login()"></label><button class="btn" onclick="login()">دخول</button></div>`;
+ return `${live?"":`<div class="ban warn">${esc(conn())}</div>`}<div class="sn">${ADM.map(a=>`<button class="${a[0]===sub?"on":""}" onclick="sub='${a[0]}';render(1)">${a[1]}</button>`).join("")}<button onclick="logout()" style="margin-inline-start:auto">خروج</button></div>${A[sub]()}`}};
+const A={
+dash(){const c=S.cases,n=c.length,rec=c.filter(x=>x.stage>=4).length,fu=c.filter(x=>x.stage>=5).length,urg=c.filter(x=>x.score>=75&&x.stage<4).length;
+ const di=sum(S.don.filter(d=>d.st==="مؤكد"),d=>d.amt),ex=sum(S.exp,e=>e.amt),exn=S.inv.filter(i=>dd(i.e)<=60).length,w=Object.values(S.weeks).filter(Boolean).length,pd=S.don.filter(d=>d.st!=="مؤكد").length;
+ const k=(v,l,c)=>`<div class="card kpi ${c||""}"><b>${v}</b><span>${l}</span></div>`;
+ const todo=[];c.filter(x=>x.score>=75&&x.stage<4).slice(0,5).forEach(x=>todo.push(["عاجلة",`${x.id} · ${x.head}: بانتظار «${STAGES[x.stage]}»`,"cases"]));
+ if(pd)todo.push(["تبرعات",`${pd} تبرع بانتظار التأكيد`,"don"]);S.inv.filter(i=>dd(i.e)<=60).slice(0,4).forEach(i=>todo.push([dd(i.e)<0?"منتهي":"قريب الانتهاء",`${i.n} ${i.c} (الكمية ${i.q})`,"inv"]));
+ return `<h2>لوحة المؤشرات</h2><p class="sub">كل الأرقام من بيانات الشيت الفعلية. الأسرة تُحتسب مستفيدة بعد الاستلام الفعلي فقط.</p>
+<div class="card" style="margin-bottom:16px"><h3>يحتاج إجراء الآن</h3>${todo.length?todo.map(t=>`<button class="todo" onclick="sub='${t[2]}';render(1)"><span class="tag ${t[0]==="تبرعات"?"":"t-h"}">${t[0]}</span>${esc(t[1])}</button>`).join(""):'<div class="sub" style="margin:6px 0 0">لا شيء معلّق حاليًا.</div>'}</div>
+<div class="grid">${k(n,"إجمالي الطلبات")}${k(rec,"أسر استلمت العلاج","k")}${k(urg,"حالات عاجلة بانتظار الإجراء",urg?"r":"")}${k(rec?Math.round(fu/rec*100)+"%":"—","متابعة بعد الصرف (الهدف 90%)")}${k(M(di),"تبرعات مؤكدة","g")}${k(M(ex),"مصروفات","g")}${k(M(di-ex),"الرصيد المتاح","g")}${k(pd,"تبرعات بانتظار التأكيد")}${k(exn,"أصناف قريبة الانتهاء أو منتهية",exn?"r":"")}${k(w+"/12","أسابيع الخطة المنجزة")}</div>
+<h3 style="margin-top:22px">توزيع الحالات على المراحل</h3><div class="card">${n?STAGES.map((s,i)=>{const m=c.filter(x=>x.stage===i).length;return `<div style="display:flex;gap:12px;align-items:center;margin:8px 0"><span style="width:150px;font-size:14px">${s}</span><div class="bar" style="flex:1"><i style="width:${m/n*100}%"></i></div><b style="width:28px;text-align:end">${m}</b></div>`}).join(""):"لا توجد حالات بعد. ابدأ من «تسجيل حالة»."}</div>`},
+new(){return `<h2>استمارة تقييم حالة</h2><p class="sub">تُحسب الدرجة تلقائيًا من 100، ويُمنح الملف كودًا يُستخدم بدل الاسم في كل ما يُعرض خارج لوحة الإدارة.</p>
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))"><div class="card"><div class="row">
+<label>اسم رب الأسرة<input id="f_head"></label><label>رقم الهاتف<input id="f_ph" inputmode="tel"></label><label>العنوان<input id="f_ad"></label>
+<label>عدد أفراد الأسرة<input id="f_mem" type="number" min="1" value="4" oninput="pv()"></label><label>عدد المرضى<input id="f_pat" type="number" min="1" value="1" oninput="pv()"></label>
+<label>الدخل الشهري (جنيه)<input id="f_inc" type="number" min="0" value="0" oninput="pv()"></label><label>تكلفة العلاج الشهرية (جنيه)<input id="f_cost" type="number" min="0" value="0" oninput="pv()"></label>
+<label>درجة الاحتياج وتوقيته<select id="f_urg" onchange="pv()"><option value="20">عاجل جدًا</option><option value="14">مرتفع</option><option value="8" selected>متوسط</option></select></label>
+<label>الوضع<select id="f_chr" onchange="pv()"><option value="1">مرض مزمن</option><option value="0">احتياج مؤقت</option></select></label>
+<label>دعم من جهة أخرى<select id="f_alt" onchange="pv()"><option value="0">لا</option><option value="1">نعم</option></select></label><label>روشتة أو تقرير طبي<select id="f_rx"><option>متاح</option><option>غير متاح</option></select></label></div>
+<label>الأدوية المطلوبة (الاسم والجرعة والكمية)<textarea id="f_meds" rows="3"></textarea></label><label>ملاحظات الزيارة الميدانية<textarea id="f_notes" rows="2"></textarea></label></div>
+<div class="card sticky"><h3>الدرجة المحسوبة</h3><div class="score" id="sc">0</div><div id="pr"></div><p class="sub" id="det"></p><button class="btn" onclick="addCase()">حفظ الحالة وإنشاء الكود</button></div></div>`},
+cases(){return `<h2>الحالات (${S.cases.length})</h2><p class="sub">مرتبة حسب الأولوية. لا يُصرف دواء قبل المراجعة الطبية والصيدلية والاعتماد.</p><div class="bar2"><input id="qs" type="search" placeholder="ابحث بالكود أو الاسم أو الهاتف" aria-label="بحث" value="${esc(qf.q)}" oninput="qf.q=this.value;g('cl').innerHTML=caseList()"><select aria-label="المرحلة" onchange="qf.st=this.value;g('cl').innerHTML=caseList()"><option value="all">كل المراحل</option>${STAGES.map((s,i)=>`<option value="${i}" ${String(qf.st)===String(i)?"selected":""}>${s}</option>`).join("")}</select></div><div id="cl">${caseList()}</div>`},
+inv(){const l=[...S.inv].sort((a,b)=>a.e.localeCompare(b.e));return `<h2>سجل المخزون</h2><p class="sub">مرتب بقاعدة الأقرب انتهاءً أولًا (FEFO). لا تُقبل أدوية مجهولة المصدر أو مرتجعة.</p>
+<div class="card" style="margin-bottom:14px"><div class="row"><label>اسم الدواء<input id="i_n"></label><label>التركيز<input id="i_c"></label><label>الكمية<input id="i_q" type="number" min="1"></label><label>تاريخ الانتهاء<input id="i_e" type="date"></label><label>المصدر<select id="i_s"><option>تبرع عيني</option><option>صيدلية شريكة</option><option>شراء بفاتورة</option><option>بنك الشفاء المصري</option></select></label></div><button class="btn" onclick="addInv()">إضافة للمخزون</button></div>
+${l.length?`<div class="card tw"><table><tr><th>الدواء</th><th>الكمية</th><th>الانتهاء</th><th>المصدر</th><th>صرف</th></tr>${l.map(i=>{const d=dd(i.e),s=d<0?'<span class="tag t-u">منتهي</span>':d<=60?'<span class="tag t-h">قريب الانتهاء</span>':"";return `<tr><td>${esc(i.n)} <small>${esc(i.c)}</small></td><td>${i.q}</td><td>${i.e} ${s}</td><td>${esc(i.s)}</td><td>${d<0?`<button class="btn alt sm" onclick="del('inv','${i.id}')">إتلاف</button>`:`<input id="o${i.id}" type="number" min="1" value="1" style="width:60px"> <input id="k${i.id}" placeholder="كود الحالة" style="width:100px"> <button class="btn sm" onclick="out('${i.id}')">صرف</button>`}</td></tr>`}).join("")}</table></div>`:empty("المخزون فارغ. أضف أول صنف.")}
+${S.log.length?`<h3 style="margin-top:18px">آخر عمليات الصرف</h3><div class="card tw"><table>${[...S.log].sort((a,b)=>((b.d||'')+b.id).localeCompare((a.d||'')+a.id)).slice(0,8).map(x=>`<tr><td>${x.d}</td><td>${esc(x.n)}</td><td>${x.q}</td><td>${esc(x.code)||"—"}</td></tr>`).join("")}</table></div>`:""}`},
+don(){const c=CF(),d=[...S.don].sort((a,b)=>((b.d||'')+b.id).localeCompare((a.d||'')+a.id));return `<h2>التبرعات</h2><p class="sub">سجّل كل تبرع يدويًا بعد التحقق منه. تُحتسب في الأرصدة بعد التأكيد فقط.</p>
+<div class="card" style="margin-bottom:14px"><div class="row"><label>اسم المتبرع<input id="n_n"></label><label>المبلغ (جنيه)<input id="n_a" type="number" min="0"></label><label>قناة الاستلام<select id="n_m">${c.pay.map(p=>`<option>${esc(p.type)}</option>`).join("")}<option>نقدًا باليد</option></select></label><label>النوع<select id="n_t"><option>تبرع عام</option><option>كفالة مريض</option><option>تبرع عيني</option></select></label><label>كود المريض (للكفالة)<input id="n_c"></label><label>مرجع التحويل أو وصف العين<input id="n_r"></label><label>التاريخ<input id="n_d" type="date" value="${day(0)}"></label><label>الحالة<select id="n_s"><option>مؤكد</option><option>بانتظار التأكيد</option></select></label></div><button class="btn" onclick="addDon()">تسجيل التبرع</button></div>
+${d.length?`<div class="card tw"><table><tr><th>التاريخ</th><th>المتبرع</th><th>المبلغ</th><th>القناة</th><th>النوع</th><th>الحالة</th><th></th></tr>${d.map(x=>`<tr><td>${x.d}</td><td>${esc(x.name)}</td><td>${M(x.amt)}</td><td>${esc(x.ch)}</td><td>${esc(x.type)} ${esc(x.code)}<br><small>${esc(x.ref)}</small></td><td><span class="tag ${x.st==="مؤكد"?"t-ok":"t-h"}">${x.st}</span></td><td>${x.st!=="مؤكد"?`<button class="btn sm" onclick="cfm('${x.id}')">تأكيد</button> `:""}<button class="btn alt sm" onclick="del('donations','${x.id}')">حذف</button></td></tr>`).join("")}</table></div>`:empty("لا توجد تبرعات مسجلة بعد.")}`},
+exp(){const e=[...S.exp].sort((a,b)=>((b.d||'')+b.id).localeCompare((a.d||'')+a.id));return `<h2>المصروفات</h2><p class="sub">كل جنيه يخرج يُسجَّل بفاتورة ليُطابَق مع التبرعات والمخزون.</p>
+<div class="card" style="margin-bottom:14px"><div class="row"><label>التاريخ<input id="e_d" type="date" value="${day(0)}"></label><label>المبلغ (جنيه)<input id="e_a" type="number" min="0"></label><label>البند<select id="e_c"><option>شراء أدوية</option><option>مصروفات تشغيلية</option><option>أخرى</option></select></label><label>المورد أو الصيدلية<input id="e_s"></label><label>رقم الفاتورة<input id="e_i"></label></div><button class="btn" onclick="addExp()">تسجيل المصروف</button></div>
+${e.length?`<div class="card tw"><table><tr><th>التاريخ</th><th>المبلغ</th><th>البند</th><th>المورد</th><th>فاتورة</th><th></th></tr>${e.map(x=>`<tr><td>${x.d}</td><td>${M(x.amt)}</td><td>${esc(x.cat)}</td><td>${esc(x.sup)}</td><td>${esc(x.inv)}</td><td><button class="btn alt sm" onclick="del('expenses','${x.id}')">حذف</button></td></tr>`).join("")}</table></div>`:empty("لا توجد مصروفات مسجلة.")}`},
+pay(){const c=CF();return `<h2>الدفع والإعدادات</h2><p class="sub">كل ما تسجله هنا يُحفظ في الشيت، وما تعدله في الشيت يدويًا يظهر هنا خلال نحو 30 ثانية.</p>
+<div class="card" style="margin-bottom:14px"><div class="row"><label>الوسيلة<select id="p_t">${PT.map(t=>`<option>${t}</option>`).join("")}</select></label><label>الرقم أو رقم الحساب<input id="p_n" dir="ltr"></label><label>اسم صاحب الحساب<input id="p_h"></label><label>ملاحظة<input id="p_o"></label></div><button class="btn" onclick="addPay()">إضافة وسيلة دفع</button></div>
+${c.pay.length?`<div class="card tw"><table>${c.pay.map((p,i)=>`<tr><td>${esc(p.type)}</td><td dir="ltr">${esc(p.number)}</td><td>${esc(p.holder)}</td><td>${esc(p.note)}</td><td><button class="btn alt sm" onclick="rmPay(${i})">حذف</button></td></tr>`).join("")}</table></div>`:empty("لم تُضف وسائل دفع بعد.")}
+<div class="card" style="margin-top:14px"><div class="row"><label>رقم واتساب لاستقبال الإيصالات (بصيغة دولية: 20100…)<input id="s_w" dir="ltr" value="${esc(c.wa)}"></label><label>هدف التبرعات (جنيه)<input id="s_g" type="number" min="0" value="${c.goal||""}"></label></div><button class="btn" onclick="saveS()">حفظ الإعدادات</button> <a class="btn alt" style="text-decoration:none;display:inline-block" href="https://docs.google.com/spreadsheets/d/${SID}/edit" target="_blank" rel="noopener">فتح الشيت</a></div>
+<div class="ban" style="margin-top:14px">لكي تظهر وسائل الدفع للزوار غير المسجلين دخولًا، أرسلها لـ Claude ليثبتها في الصفحة نفسها.</div>`}};
+const qf={q:"",st:"all"},sig={};let lastSync=0;
+function bz(on){document.body.classList.toggle("busy",!!on);pill()}
+function pill(){const p=g("st");if(!p)return;const b=document.body.classList.contains("busy");p.className="pill "+(b?"wait":live?"on":(err||!mcp)?"err":"wait");p.textContent=b?"جارٍ الحفظ…":live?"متصل بالشيت"+(lastSync?" · "+new Date(lastSync).toLocaleTimeString("ar-EG",{hour:"2-digit",minute:"2-digit"}):""):!mcp?"غير متصل":err?"خطأ في الاتصال":"جارٍ الاتصال…"}
+function ask(m){return new Promise(r=>{const d=document.createElement("div");d.className="mod";d.setAttribute("role","dialog");d.setAttribute("aria-modal","true");d.innerHTML=`<div><p style="margin:0 0 18px;font-weight:600">${esc(m)}</p><button class="btn" id="ay">تأكيد</button> <button class="btn alt" id="an">إلغاء</button></div>`;document.body.appendChild(d);const x=v=>{d.remove();r(v)};d.querySelector("#ay").onclick=()=>x(true);d.querySelector("#an").onclick=()=>x(false);d.onclick=e=>{if(e.target===d)x(false)};d.addEventListener("keydown",e=>{if(e.key==="Escape")x(false)});d.querySelector("#an").focus()})}
+function bad(id,m){const e=g(id);if(e){e.classList.add("bad");e.focus();e.addEventListener("input",()=>e.classList.remove("bad"),{once:true})}toast(m,"err")}
+function caseList(){const q=qf.q.trim().toLowerCase(),c=S.cases.filter(x=>(qf.st==="all"||x.stage===+qf.st)&&(!q||(x.id+" "+x.head+" "+x.phone).toLowerCase().includes(q)));
+ return c.length?[...c].sort((a,b)=>b.score-a.score).map(x=>{const p=prio(x.score),fund=sum(S.don.filter(d=>d.code===x.id&&d.st==="مؤكد"),d=>d.amt);return `<div class="card case"><div class="ch"><b>${esc(x.id)}</b><span class="tag ${p[1]}">${p[0]}</span><span class="tag">${x.score}/100</span><span class="tag">${x.chronic?"مزمن":"مؤقت"}</span>${fund?`<span class="tag t-ok">كفالة ${M(fund)}</span>`:""}<span class="who">${esc(x.head)}${x.phone?" · <span dir='ltr'>"+esc(x.phone)+"</span>":""} · ${x.patients} مريض</span></div>${stepsH(x)}<div class="sub" style="margin:0 0 10px;font-size:14px">العنوان: ${esc(x.addr)||"—"} · الأدوية: ${esc(x.meds)||"—"}</div><label>آخر تعديل طبي (يراه الكفيل)<input value="${esc(x.upd)}" onchange="cu('${x.id}',this.value)"></label><button class="btn sm" onclick="adv('${x.id}')" ${x.stage>=5?"disabled":""}>${x.stage>=5?"مكتملة":"إتمام: "+STAGES[x.stage]}</button> <button class="btn alt sm" onclick="del('cases','${x.id}')">حذف</button></div>`}).join(""):empty(S.cases.length?"لا نتائج مطابقة للبحث.":"لا توجد حالات بعد. سجّل أول حالة من تبويب «تسجيل حالة».")}
+async function login(){const v=g("pw").value.trim().replace(/^@+|@+$/g,"");if(!crypto.subtle)return toast("المتصفح لا يدعم التحقق. افتح الصفحة عبر رابط آمن.");
+ const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(v));const h=[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");
+ if(h===HASH){adm=true;try{sessionStorage.setItem("adm","1")}catch(e){}render(1)}else toast("كلمة السر غير صحيحة")}
+function logout(){adm=false;try{sessionStorage.removeItem("adm")}catch(e){}render(1)}
+function cp(t){try{navigator.clipboard.writeText(t);toast("تم النسخ")}catch(e){toast("انسخ الرقم يدويًا")}}
+function wa(){const c=CF(),n=+g("da").value;if(!g("dn").value.trim()||!(n>0))return toast("اكتب اسمك والمبلغ");if(!c.wa)return toast("رقم الاستقبال لم يُحدد بعد. تواصل مع الإدارة.");
+ const m=`السلام عليكم، قمت بالتبرع لمشروع دوائك علينا.\nالاسم: ${g("dn").value}\nالمبلغ: ${n} جنيه\nالوسيلة: ${g("dm").value}\nالنوع: ${g("dt").value}${g("dc").value?"\nكود المريض: "+g("dc").value:""}\nمرفق إيصال التحويل.`;
+ window.open("https://wa.me/"+c.wa.replace(/\D/g,"")+"?text="+encodeURIComponent(m),"_blank")}
+function sp(){const c=S.cases.find(x=>x.id===g("sp").value.trim().toUpperCase());g("spo").innerHTML=c?`<div class="card"><h3>${esc(c.id)}</h3>${stepsH(c)}<p>الحالة: ${c.stage>=4?"استلم العلاج":"قيد الإجراء"} · ${c.chronic?"علاج مزمن":"احتياج مؤقت"}</p><p><b>آخر تعديل طبي:</b> ${esc(c.upd)||"لا توجد تعديلات"}</p></div>`:'<div class="card warn">الكود غير موجود. تأكد من كتابته كما وصلك، مثل DW-0001.</div>'}
+const wk=(i,v)=>mutCfg({weeks:{...S.weeks,[i]:v}});
+function fm(){return{members:+g("f_mem").value||1,patients:+g("f_pat").value||1,income:+g("f_inc").value||0,cost:+g("f_cost").value||0,urgency:+g("f_urg").value,chronic:g("f_chr").value==="1",alt:g("f_alt").value==="1"}}
+function pv(){if(!g("sc"))return;const f=fm(),s=calc(f),p=prio(s);g("sc").textContent=s+" / 100";g("pr").innerHTML=`<span class="tag ${p[1]}">أولوية ${p[0]}</span>`;g("det").textContent="نصيب الفرد من الدخل: "+Math.round(f.income/f.members)+" جنيه شهريًا"}
+async function addCase(){const f=fm(),n0=g("f_head").value.trim();if(!n0)return bad("f_head","اكتب اسم رب الأسرة");let code="";
+ const o={head:n0,phone:g("f_ph").value,addr:g("f_ad").value,...f,rx:g("f_rx").value,meds:g("f_meds").value.trim(),notes:g("f_notes").value,stage:g("f_rx").value==="متاح"?1:0,upd:"",d:day(0)};
+ if(await mut("cases",it=>{const n=Math.max(0,...it.map(c=>+((c.id||"").match(/^DW-(\d+)$/)||[0,0])[1]))+1;code="DW-"+String(n).padStart(4,"0");it.push({id:code,...o});return it})){toast("تم الحفظ. الكود: "+code,"ok");sub="cases";render(1)}}
+const adv=id=>mut("cases",it=>it.map(x=>x.id===id?{...x,stage:Math.min(5,x.stage+1)}:x));
+const cu=(id,v)=>mut("cases",it=>it.map(x=>x.id===id?{...x,upd:v}:x));
+async function addInv(){const n=g("i_n").value.trim(),q=+g("i_q").value,e=g("i_e").value;if(!n)return bad("i_n","اكتب اسم الدواء");if(q<1)return bad("i_q","اكتب الكمية");if(!e)return bad("i_e","حدد تاريخ الانتهاء");
+ if(dd(e)<0)return toast("لا يُقبل صنف منتهي الصلاحية");await up("inv",{id:nid(),n,c:g("i_c").value,q,e,s:g("i_s").value})}
+async function out(id){const i=S.inv.find(x=>x.id===id),q=+g("o"+id).value,code=g("k"+id).value.trim().toUpperCase();if(!i||q<1||q>i.q)return toast("الكمية غير صحيحة أو أكبر من المتاح");
+ if(code&&!S.cases.some(c=>c.id===code))return toast("كود الحالة غير موجود");
+ const ok=await mut("inv",it=>{const x=it.find(y=>y.id===id);if(!x||x.q<q)throw{code:"write_refused",message:"الكمية في الشيت أقل من المطلوب. حدّث الصفحة."};x.q-=q;return it.filter(y=>y.q>0)});
+ if(ok&&await up("log",{id:nid(),d:day(0),n:i.n,q,code}))toast("تم تسجيل الصرف","ok")}
+async function addDon(){const a=+g("n_a").value,n0=g("n_n").value.trim(),code=g("n_c").value.trim().toUpperCase();if(!n0)return bad("n_n","اكتب اسم المتبرع");if(!(a>0||g("n_t").value==="تبرع عيني"))return bad("n_a","اكتب المبلغ");
+ if(code&&!S.cases.some(c=>c.id===code))return toast("كود المريض غير موجود");
+ if(await up("don",{id:nid(),name:n0,amt:a,ch:g("n_m").value,type:g("n_t").value,code,ref:g("n_r").value,d:g("n_d").value,st:g("n_s").value}))toast("تم تسجيل التبرع","ok")}
+const cfm=id=>mut("don",it=>it.map(x=>x.id===id?{...x,st:"مؤكد"}:x));
+async function addExp(){const a=+g("e_a").value;if(!(a>0))return bad("e_a","اكتب مبلغ المصروف");if(await up("exp",{id:nid(),d:g("e_d").value,amt:a,cat:g("e_c").value,sup:g("e_s").value,inv:g("e_i").value}))toast("تم تسجيل المصروف","ok")}
+function addPay(){const n=g("p_n").value.trim();if(!n)return bad("p_n","اكتب الرقم أو رقم الحساب");up("pay",{id:nid(),type:g("p_t").value,number:n,holder:g("p_h").value,note:g("p_o").value})}
+function rmPay(i){const p=S.pay[i];if(p)del("pay",p.id)}
+async function saveS(){if(await mutCfg({wa:g("s_w").value.replace(/\D/g,""),goal:+g("s_g").value||0}))toast("تم حفظ الإعدادات","ok")}
+init();
+</script>
+</body>
+</html>
