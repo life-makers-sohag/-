@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>دوائك علينا — صناع الحياة سوهاج</title>
+<meta name="theme-color" content="#034572"><title>دوائك علينا — صناع الحياة سوهاج</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap">
 <style>
 :root{--navy:#034572;--navy2:#0A5A92;--gold:#F5AE45;--bg:#F4F6F9;--card:#fff;--ink:#12263A;--mute:#5A6B7B;--line:#E1E7ED;--ok:#1E8A5A;--bad:#C2413B;--sh:0 1px 2px rgba(3,69,114,.06),0 8px 24px rgba(3,69,114,.07);--r:16px;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -91,7 +91,7 @@ footer{max-width:1120px;margin:30px auto 0;padding:18px 20px calc(18px + env(saf
 <footer>مؤسسة صناع الحياة · سوهاج — مشروع «دوائك علينا». بيانات الأسر ومعلوماتهم الطبية سرية ولا تُنشر.</footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
-const HASH="91eb1c90926cbb68cb8fc06045778c79bf2f2620ace26853486dfa0b4da73b7b";
+const API="PASTE_APPS_SCRIPT_URL_HERE";
 const PUBLIC={pay:[],wa:"",goal:0};
 const TABS=[["home","الرئيسية"],["donate","تبرّع"],["sponsor","كفالة مريض"],["plan","الخطة الزمنية"],["board","البورد والقواعد"],["admin","🔒 لوحة الإدارة"]];
 const ADM=[["dash","المؤشرات"],["new","تسجيل حالة"],["cases","الحالات"],["inv","المخزون"],["don","التبرعات"],["exp","المصروفات"],["pay","الدفع والإعدادات"]];
@@ -107,9 +107,10 @@ const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&
 const g=id=>document.getElementById(id);
 const nid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,5);
 const sum=(a,f)=>a.reduce((x,y)=>x+(+f(y)||0),0);
-let mcp=null,live=false,err=null,ready=false,adm=false,tab="home",sub="dash",pend=false;
-let S={cases:[],inv:[],don:[],exp:[],log:[],pay:[],cfg:{},weeks:{}};
-try{adm=sessionStorage.getItem("adm")==="1"}catch(e){}
+let PW="",live=false,err=null,ready=false,adm=false,tab="home",sub="dash",pend=false;
+let S={cases:[],inv:[],don:[],exp:[],log:[],pay:[],cfg:{},weeks:{},pub:{}};
+const ok=()=>API&&!/^PASTE/.test(API);
+try{PW=sessionStorage.getItem("pw")||"";adm=!!PW}catch(e){}
 {const h=location.hash.slice(1);if(TABS.some(t=>t[0]===h))tab=h}
 const CF=()=>({pay:S.pay.length?S.pay:PUBLIC.pay,wa:S.cfg.wa||PUBLIC.wa,goal:S.cfg.goal||PUBLIC.goal});
 const toast=(m,k)=>{const t=g("toast");t.textContent=m;t.className="toast "+(k||"");t.style.display="block";clearTimeout(toast.t);toast.t=setTimeout(()=>t.style.display="none",3400)};
@@ -128,36 +129,30 @@ exp:{n:"المصروفات",f:6,d:r=>({id:r[0]||"",d:nd(r[1]),amt:nm(r[2]),cat:r
 log:{n:"الصرف",f:5,d:r=>({id:r[0]||"",d:nd(r[1]),n:r[2]||"",q:nm(r[3]),code:(r[4]||"").toUpperCase()}),e:o=>[o.id,o.d,o.n,o.q,o.code]},
 pay:{n:"وسائل الدفع",f:5,d:r=>({id:r[0]||"",type:r[1]||"",number:r[2]||"",holder:r[3]||"",note:r[4]||""}),e:o=>[o.id,o.type,o.number,o.holder,o.note]},
 cfg:{n:"الإعدادات",f:2}};
-const rng=k=>`'${T[k].n}'!A:Z`;
-const rowsOf=res=>{const v=res&&res.payload&&Array.isArray(res.payload.values)?res.payload.values:[];return{raw:Math.max(0,v.length-1),rows:v.slice(1).filter(r=>r.some(c=>String(c||"").trim()))}};
+const clean=v=>(v||[]).filter(r=>r.some(c=>String(c||"").trim()));
 function parseCfg(rows){const v=k=>((rows.find(r=>r[0]===k)||[])[1]||"");const w={};dg(v("الأسابيع المنجزة")).split(/[,;]/).forEach(x=>{if(+x)w[+x-1]=true});return{wa:String(v("واتساب")).replace(/\D/g,""),goal:nm(v("الهدف")),weeks:w}}
 function setS(k,rows){if(k==="cfg"){const c=parseCfg(rows);S.cfg={wa:c.wa,goal:c.goal};S.weeks=c.weeks}else S[k]=rows.map((r,i)=>{const o=T[k].d(r);if(!o.id)o.id="_"+i;return o})}
-const conn=()=>!mcp?"افتح الصفحة داخل Claude بحساب مربوط بموصّل Google Sheets ليعمل الحفظ والتحديث من الشيت.":err?errMsg(err):"جارٍ الاتصال بالشيت…";
-function errMsg(e){const c=e&&e.code;return c==="server_not_connected"?"موصّل Google Sheets غير مضاف في حسابك. أضفه من إعدادات Claude ثم أعد فتح الصفحة.":c==="needs_reauth"?"انتهت صلاحية ربط Google Sheets. أعد ربطه من إعدادات Claude.":c==="not_in_manifest"||c==="approval_required"?"لم تتم الموافقة على وصول الصفحة إلى Google Sheets.":c==="blocked_by_policy"?"سياسة مؤسستك تمنع هذا الموصّل.":"تعذّر الاتصال بالشيت: "+((e&&e.message)||"خطأ غير معروف")}
-async function init(){
- try{mcp=await window.claude.use("mcp")}catch(e){mcp=null}
- ready=true;
- if(mcp)for(const k of Object.keys(T))mcp.watchTool(SV,"get_values",{spreadsheetId:SID,range:rng(k)},ev=>{if(ev.type==="data"){const j=JSON.stringify(ev.result.payload&&ev.result.payload.values);lastSync=(ev.result.cache&&ev.result.cache.storedAt)||Date.now();const was=live;live=true;err=null;if(sig[k]===j&&was){pill();return}sig[k]=j;setS(k,rowsOf(ev.result).rows)}else err=ev.error;render()},{refetchInterval:30000});
- render(1)}
-async function rd(k){const r=await mcp.callTool(SV,"get_values",{spreadsheetId:SID,range:rng(k)},{cache:{refresh:true}});const x=rowsOf(r);return{raw:x.raw,rows:x.rows}}
+function errMsg(e){const c=e&&e.code;return c==="no_api"?"لم يُضبط رابط الخادم (Apps Script) في ملف الموقع بعد.":c==="auth"?"كلمة السر غير صحيحة.":c==="locked"?"محاولات كثيرة خاطئة. انتظر 10 دقائق.":c==="net"?"تعذّر الوصول إلى الخادم. تحقق من الإنترنت أو من رابط النشر.":c==="bad_response"?"رد غير متوقع من الخادم. تأكد أن النشر بصلاحية «أي شخص» وأنك نشرت أحدث نسخة.":(e&&e.message)||"خطأ غير معروف"}
+const conn=()=>!ok()?errMsg({code:"no_api"}):err?errMsg(err):"جارٍ الاتصال بالشيت…";
+async function call(o){if(!ok())throw{code:"no_api"};let r,t;
+ try{r=await fetch(API,{method:"POST",body:JSON.stringify({...o,pw:PW})});t=await r.text()}catch(e){throw{code:"net"}}
+ let j;try{j=JSON.parse(t)}catch(e){throw{code:"bad_response"}}
+ if(!j.ok)throw{code:j.code||"error",message:j.error};return j}
+let lastSig="";
+async function load(force){
+ try{const j=await call({action:adm?"readAll":"public"});const sg=JSON.stringify(j);lastSync=Date.now();const was=live;live=true;err=null;
+  if(sg===lastSig&&was&&!force){pill();return}lastSig=sg;
+  if(adm){for(const k of Object.keys(T))setS(k,clean(j.data[k]))}
+  else{S.pay=clean(j.pay).map(r=>T.pay.d(r));S.cfg={wa:String(j.cfg.wa||"").replace(/\D/g,""),goal:+j.cfg.goal||0};S.pub={raised:j.raised,cases:j.cases,received:j.received}}
+  render(force)
+ }catch(e){if(e.code==="auth"&&adm){logout();toast("تغيّرت كلمة السر أو انتهت الجلسة. سجّل الدخول من جديد.","err");return}err=e;live=false;render()}}
+async function init(){ready=true;render(1);await load(1);setInterval(load,25000);document.addEventListener("visibilitychange",()=>{if(!document.hidden)load()})}
 const sv=v=>v==null?"":String(v);
-const fixIds=(k,it)=>{let n=Math.max(0,...it.map(x=>+((x.id||"").match(/^DW-(\d+)$/)||[0,0])[1]));return it.map(x=>(!x.id||x.id[0]==="_")?{...x,id:k==="cases"?"DW-"+String(++n).padStart(4,"0"):nid()}:x)}
-const fail=e=>{toast(e&&e.code==="write_refused"?e.message:errMsg(e),"err")};
-async function mut(k,fn){
- if(!mcp){toast(conn());return false}
- try{bz(1);const f=await rd(k);let it=f.rows.map((r,i)=>{const o=T[k].d(r);if(!o.id)o.id="_"+i;return o});
-  it=fixIds(k,fn(it));const out=it.map(o=>T[k].e(o).map(sv));while(out.length<f.raw)out.push(Array(T[k].f).fill(""));
-  if(out.length)await mcp.callTool(SV,"update_values",{spreadsheetId:SID,range:`'${T[k].n}'!A2`,values:out});
-  S[k]=it;lastSync=Date.now();if(mcp.invalidate)mcp.invalidate(SV,"get_values").catch(()=>{});render(1);return true
- }catch(e){fail(e);return false}finally{bz(0)}}
-async function mutCfg(p){
- if(!mcp){toast(conn());return false}
- try{bz(1);const f=await rd("cfg"),c={...parseCfg(f.rows),...p};
-  await mcp.callTool(SV,"update_values",{spreadsheetId:SID,range:"'الإعدادات'!A2",values:[["واتساب",sv(c.wa)],["الهدف",sv(c.goal||"")],["الأسابيع المنجزة",Object.keys(c.weeks).filter(i=>c.weeks[i]).map(i=>+i+1).join(",")]]});
-  S.cfg={wa:c.wa,goal:c.goal};S.weeks=c.weeks;render(1);return true
- }catch(e){fail(e);return false}finally{bz(0)}}
-const up=(k,o)=>mut(k,it=>{const i=it.findIndex(x=>x.id===o.id);if(i<0)it.push(o);else it[i]=o;return it});
-async function del(c,id){const k={donations:"don",expenses:"exp"}[c]||c;if(await ask("تأكيد الحذف؟ لا يمكن التراجع."))mut(k,it=>it.filter(x=>x.id!==id))}
+const fail=e=>{toast(errMsg(e),"err")};
+async function wr(o){try{bz(1);const j=await call(o);await load(1);return j}catch(e){if(e.code==="auth"){logout();toast("كلمة السر غير صحيحة.","err")}else fail(e);return null}finally{bz(0)}}
+const up=(k,o)=>wr({action:"upsert",tab:T[k].n,row:T[k].e(o).map(sv)});
+const pt=(k,id,ch)=>wr({action:"patch",tab:T[k].n,id,changes:ch});
+async function del(c,id){const k={donations:"don",expenses:"exp"}[c]||c;if(await ask("تأكيد الحذف؟ لا يمكن التراجع."))wr({action:"delete",tab:T[k].n,id})}
 function nav(){g("nav").innerHTML=TABS.map(t=>`<button class="${t[0]===tab?"on":""}" ${t[0]===tab?'aria-current="page"':""} onclick="go('${t[0]}')">${t[1]}</button>`).join("")}
 function go(t){tab=t;location.hash=t;render(1);scrollTo(0,0)}
 function render(f){const a=document.activeElement;
@@ -172,19 +167,19 @@ function calc(f){const pc=f.income/Math.max(f.members,1);
 const empty=t=>`<div class="card empty">${t}</div>`;
 const stepsH=x=>`<div class="steps">${STAGES.map((s,i)=>`<div class="st ${i<x.stage?"d":i===x.stage?"c":""}">${s}</div>`).join("")}</div>`;
 const V={
-home(){const n=S.cases.length,rec=S.cases.filter(x=>x.stage>=4).length,di=sum(S.don.filter(d=>d.st==="مؤكد"),d=>d.amt);
+home(){const P=S.pub||{},n=adm?S.cases.length:(P.cases||0),rec=adm?S.cases.filter(x=>x.stage>=4).length:(P.received||0),di=adm?sum(S.don.filter(d=>d.st==="مؤكد"),d=>d.amt):(P.raised||0);
  return `<section class="hero"><h1>دوائك علينا</h1><p>منظومة خيرية متكاملة لتوفير العلاج للأسر المستحقة بحسب احتياجها الفعلي: تسجيل الحالات، تحديد الأولويات، توفير الدواء من مصادر آمنة، ومتابعة الصرف والتبرعات خلال 90 يومًا.</p><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" onclick="go('donate')">تبرّع الآن</button><button class="btn ghost" onclick="go('sponsor')">تابع كفالتك</button></div>${live?`<div class="stats"><div><b>${n}</b>طلب مسجل</div><div><b>${rec}</b>أسرة استلمت العلاج</div><div><b>${M(di)}</b>تبرعات مؤكدة</div></div>`:""}</section>
 <h2>كيف يعمل النظام</h2><p class="sub">كل طلب يمر بالمسار نفسه من التسجيل حتى المتابعة.</p>
 <div class="grid">${STAGES.map((s,i)=>`<div class="card hv"><span class="num">${i+1}</span><h3>${s}</h3><span class="sub" style="margin:0">${["استقبال بيانات الأسرة واحتياجها","تحديد الأحقية والأولوية","التأكد من الوصفة والدواء المناسب","تحديد الكمية والتكلفة والتمويل","من مصدر مرخص مع توثيق التسليم","التأكد من الاستلام وتحديث الاحتياجات"][i]}</span></div>`).join("")}</div>
 <h2>أهداف المشروع</h2><div class="grid">${["توفير العلاج للأسر المستحقة وتخفيف العبء المادي","استمرارية العلاج لأصحاب الأمراض المزمنة","قاعدة بيانات متكاملة للأسر واحتياجاتها الدوائية","شراكات مع الصيدليات وشركات الأدوية والمتبرعين","سلامة الأدوية وصحة الصرف عبر متطوعين متخصصين","نظام شفاف وموثق للتبرعات والمخزون والصرف"].map(x=>`<div class="card hv">${x}</div>`).join("")}</div>
 <h2>التزاماتنا</h2>${RULES.slice(0,6).map(r=>`<div class="rule">${r}</div>`).join("")}`},
-donate(){const c=CF(),tot=sum(S.don.filter(d=>d.st==="مؤكد"),d=>d.amt);
+donate(){const c=CF(),tot=adm?sum(S.don.filter(d=>d.st==="مؤكد"),d=>d.amt):((S.pub||{}).raised||0);
  return `<h2>تبرّع لمشروع دوائك علينا</h2><p class="sub">كل تبرع يُسجَّل ويُوثَّق ويُصرف على الأدوية فقط، عبر القنوات الرسمية للجمعية.</p>
 ${live&&c.goal?`<div class="card" style="margin-bottom:14px"><b>${M(tot)}</b> من هدف ${M(c.goal)}<div class="bar" style="margin-top:8px"><i style="width:${Math.min(100,tot/c.goal*100)}%"></i></div></div>`:""}
 <div class="grid" style="margin-bottom:6px"><div class="card"><span class="num">1</span><b>حوّل المبلغ</b><div class="sub" style="margin:0">عبر إحدى الوسائل أدناه.</div></div><div class="card"><span class="num">2</span><b>أرسل الإيصال</b><div class="sub" style="margin:0">عبر واتساب بالنموذج الظاهر بعد الوسائل.</div></div><div class="card"><span class="num">3</span><b>نؤكد استلامه</b><div class="sub" style="margin:0">ويُسجَّل تبرعك رسميًا ويُصرف على الأدوية.</div></div></div><h3 style="margin-top:20px">وسائل التحويل</h3>${c.pay.length?`<div class="grid">${c.pay.map(p=>`<div class="card pm"><span class="tag">${esc(p.type)}</span><div style="margin:6px 0"><b>${esc(p.number)}</b></div><div>${esc(p.holder)}</div><div class="sub" style="margin:0">${esc(p.note)}</div><button class="btn alt sm" style="margin-top:8px" onclick="cp('${esc(p.number)}')">نسخ الرقم</button></div>`).join("")}</div>`:empty("سيُعلَن عن وسائل التبرع هنا قريبًا.")}
 <h3 style="margin-top:22px">بعد التحويل</h3><div class="card"><div class="row"><label>اسمك<input id="dn"></label><label>المبلغ (جنيه)<input id="da" type="number" min="1"></label><label>وسيلة التحويل<select id="dm">${c.pay.map(p=>`<option>${esc(p.type)}</option>`).join("")||"<option>أخرى</option>"}</select></label><label>نوع التبرع<select id="dt"><option>تبرع عام للمشروع</option><option>كفالة مريض</option><option>تبرع عيني (أدوية)</option></select></label><label>كود المريض (للكفالة)<input id="dc" placeholder="DW-0001"></label></div>
 <button class="btn" onclick="wa()">أرسل الإيصال عبر واتساب</button> <span class="sub">سيصل طلبك للإدارة وتؤكد استلام التبرع.</span></div>`},
-sponsor(){return `<h2>كفالة مريض</h2><p class="sub">يتابع الكفيل حالة المريض بالكود فقط، دون أي بيانات تعريفية.</p>${live?"":'<div class="ban">المتابعة بالكود تتطلب ربط حساب Google Sheets. تواصل مع الإدارة.</div>'}<div class="card"><label>كود الحالة<input id="sp" placeholder="DW-0001"></label><button class="btn" onclick="sp()">متابعة الحالة</button></div><div id="spo" style="margin-top:14px"></div>`},
+sponsor(){return `<h2>كفالة مريض</h2><p class="sub">يتابع الكفيل حالة المريض بالكود فقط، دون أي بيانات تعريفية.</p>${live?"":'<div class="ban">تعذّر الاتصال بالنظام حاليًا. حاول لاحقًا.</div>'}<div class="card"><label>كود الحالة<input id="sp" placeholder="DW-0001"></label><button class="btn" onclick="sp()">متابعة الحالة</button></div><div id="spo" style="margin-top:14px"></div>`},
 plan(){return `<h2>الخطة الزمنية — 90 يومًا</h2><p class="sub">${adm?"علّم الأسابيع المنجزة لتظهر في لوحة المؤشرات.":"سجّل دخول لوحة الإدارة لتعليم الأسابيع المنجزة."}</p>${WEEKS.map((w,i)=>`${w[0]?`<div class="ph">${["الشهر الأول","الشهر الثاني","الشهر الثالث"][i/4|0]}: ${w[0]}</div>`:""}<div class="wk"><input type="checkbox" aria-label="أسبوع ${i+1}" ${S.weeks[i]?"checked":""} ${adm&&live?"":"disabled"} onchange="wk(${i},this.checked)"><div><b>الأسبوع ${i+1}: ${w[1]}</b><div class="sub" style="margin:0">${w[2]}</div></div></div>`).join("")}
 <h3 style="margin-top:24px">مؤشرات النجاح</h3><div class="card">توثيق الصرف وسلامة المصدر 100% · متابعة 90% من الأسر · مطابقة شهرية للمخزون والفواتير · 3 شراكات مبدئية · تقرير شهري وتقرير ختامي · خدمة 20–30 أسرة في أول شهر تشغيل.</div>`},
 board(){return `<h2>البورد المركزي</h2><p class="sub">ثمانية أدوار تشغيلية معتمدة.</p><div class="grid">${ROLES.map((r,i)=>`<div class="card"><h3>${i+1}. ${r[0]}</h3><span class="sub">${r[1]}</span></div>`).join("")}</div>
@@ -227,45 +222,47 @@ pay(){const c=CF();return `<h2>الدفع والإعدادات</h2><p class="sub
 <div class="card" style="margin-bottom:14px"><div class="row"><label>الوسيلة<select id="p_t">${PT.map(t=>`<option>${t}</option>`).join("")}</select></label><label>الرقم أو رقم الحساب<input id="p_n" dir="ltr"></label><label>اسم صاحب الحساب<input id="p_h"></label><label>ملاحظة<input id="p_o"></label></div><button class="btn" onclick="addPay()">إضافة وسيلة دفع</button></div>
 ${c.pay.length?`<div class="card tw"><table>${c.pay.map((p,i)=>`<tr><td>${esc(p.type)}</td><td dir="ltr">${esc(p.number)}</td><td>${esc(p.holder)}</td><td>${esc(p.note)}</td><td><button class="btn alt sm" onclick="rmPay(${i})">حذف</button></td></tr>`).join("")}</table></div>`:empty("لم تُضف وسائل دفع بعد.")}
 <div class="card" style="margin-top:14px"><div class="row"><label>رقم واتساب لاستقبال الإيصالات (بصيغة دولية: 20100…)<input id="s_w" dir="ltr" value="${esc(c.wa)}"></label><label>هدف التبرعات (جنيه)<input id="s_g" type="number" min="0" value="${c.goal||""}"></label></div><button class="btn" onclick="saveS()">حفظ الإعدادات</button> <a class="btn alt" style="text-decoration:none;display:inline-block" href="https://docs.google.com/spreadsheets/d/${SID}/edit" target="_blank" rel="noopener">فتح الشيت</a></div>
-<div class="ban" style="margin-top:14px">لكي تظهر وسائل الدفع للزوار غير المسجلين دخولًا، أرسلها لـ Claude ليثبتها في الصفحة نفسها.</div>`}};
+<div class="ban" style="margin-top:14px">وسائل الدفع ورقم واتساب والهدف تظهر لكل زوار الموقع تلقائيًا.</div>`}};
 const qf={q:"",st:"all"},sig={};let lastSync=0;
 function bz(on){document.body.classList.toggle("busy",!!on);pill()}
-function pill(){const p=g("st");if(!p)return;const b=document.body.classList.contains("busy");p.className="pill "+(b?"wait":live?"on":(err||!mcp)?"err":"wait");p.textContent=b?"جارٍ الحفظ…":live?"متصل بالشيت"+(lastSync?" · "+new Date(lastSync).toLocaleTimeString("ar-EG",{hour:"2-digit",minute:"2-digit"}):""):!mcp?"غير متصل":err?"خطأ في الاتصال":"جارٍ الاتصال…"}
+function pill(){const p=g("st");if(!p)return;const b=document.body.classList.contains("busy");p.className="pill "+(b?"wait":live?"on":(err||!ok())?"err":"wait");p.textContent=b?"جارٍ الحفظ…":live?"متصل بالشيت"+(lastSync?" · "+new Date(lastSync).toLocaleTimeString("ar-EG",{hour:"2-digit",minute:"2-digit"}):""):!ok()?"غير متصل":err?"خطأ في الاتصال":"جارٍ الاتصال…"}
 function ask(m){return new Promise(r=>{const d=document.createElement("div");d.className="mod";d.setAttribute("role","dialog");d.setAttribute("aria-modal","true");d.innerHTML=`<div><p style="margin:0 0 18px;font-weight:600">${esc(m)}</p><button class="btn" id="ay">تأكيد</button> <button class="btn alt" id="an">إلغاء</button></div>`;document.body.appendChild(d);const x=v=>{d.remove();r(v)};d.querySelector("#ay").onclick=()=>x(true);d.querySelector("#an").onclick=()=>x(false);d.onclick=e=>{if(e.target===d)x(false)};d.addEventListener("keydown",e=>{if(e.key==="Escape")x(false)});d.querySelector("#an").focus()})}
 function bad(id,m){const e=g(id);if(e){e.classList.add("bad");e.focus();e.addEventListener("input",()=>e.classList.remove("bad"),{once:true})}toast(m,"err")}
 function caseList(){const q=qf.q.trim().toLowerCase(),c=S.cases.filter(x=>(qf.st==="all"||x.stage===+qf.st)&&(!q||(x.id+" "+x.head+" "+x.phone).toLowerCase().includes(q)));
  return c.length?[...c].sort((a,b)=>b.score-a.score).map(x=>{const p=prio(x.score),fund=sum(S.don.filter(d=>d.code===x.id&&d.st==="مؤكد"),d=>d.amt);return `<div class="card case"><div class="ch"><b>${esc(x.id)}</b><span class="tag ${p[1]}">${p[0]}</span><span class="tag">${x.score}/100</span><span class="tag">${x.chronic?"مزمن":"مؤقت"}</span>${fund?`<span class="tag t-ok">كفالة ${M(fund)}</span>`:""}<span class="who">${esc(x.head)}${x.phone?" · <span dir='ltr'>"+esc(x.phone)+"</span>":""} · ${x.patients} مريض</span></div>${stepsH(x)}<div class="sub" style="margin:0 0 10px;font-size:14px">العنوان: ${esc(x.addr)||"—"} · الأدوية: ${esc(x.meds)||"—"}</div><label>آخر تعديل طبي (يراه الكفيل)<input value="${esc(x.upd)}" onchange="cu('${x.id}',this.value)"></label><button class="btn sm" onclick="adv('${x.id}')" ${x.stage>=5?"disabled":""}>${x.stage>=5?"مكتملة":"إتمام: "+STAGES[x.stage]}</button> <button class="btn alt sm" onclick="del('cases','${x.id}')">حذف</button></div>`}).join(""):empty(S.cases.length?"لا نتائج مطابقة للبحث.":"لا توجد حالات بعد. سجّل أول حالة من تبويب «تسجيل حالة».")}
-async function login(){const v=g("pw").value.trim().replace(/^@+|@+$/g,"");if(!crypto.subtle)return toast("المتصفح لا يدعم التحقق. افتح الصفحة عبر رابط آمن.");
- const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(v));const h=[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");
- if(h===HASH){adm=true;try{sessionStorage.setItem("adm","1")}catch(e){}render(1)}else toast("كلمة السر غير صحيحة")}
-function logout(){adm=false;try{sessionStorage.removeItem("adm")}catch(e){}render(1)}
+async function login(){const v=g("pw").value.trim();if(!v)return bad("pw","اكتب كلمة السر");PW=v;
+ try{bz(1);await call({action:"auth"});adm=true;try{sessionStorage.setItem("pw",PW)}catch(e){}lastSig="";await load(1);render(1)}
+ catch(e){PW="";toast(errMsg(e),"err")}finally{bz(0)}}
+function logout(){adm=false;PW="";lastSig="";S={...S,cases:[],inv:[],don:[],exp:[],log:[]};try{sessionStorage.removeItem("pw")}catch(e){}load(1)}
 function cp(t){try{navigator.clipboard.writeText(t);toast("تم النسخ")}catch(e){toast("انسخ الرقم يدويًا")}}
 function wa(){const c=CF(),n=+g("da").value;if(!g("dn").value.trim()||!(n>0))return toast("اكتب اسمك والمبلغ");if(!c.wa)return toast("رقم الاستقبال لم يُحدد بعد. تواصل مع الإدارة.");
  const m=`السلام عليكم، قمت بالتبرع لمشروع دوائك علينا.\nالاسم: ${g("dn").value}\nالمبلغ: ${n} جنيه\nالوسيلة: ${g("dm").value}\nالنوع: ${g("dt").value}${g("dc").value?"\nكود المريض: "+g("dc").value:""}\nمرفق إيصال التحويل.`;
  window.open("https://wa.me/"+c.wa.replace(/\D/g,"")+"?text="+encodeURIComponent(m),"_blank")}
-function sp(){const c=S.cases.find(x=>x.id===g("sp").value.trim().toUpperCase());g("spo").innerHTML=c?`<div class="card"><h3>${esc(c.id)}</h3>${stepsH(c)}<p>الحالة: ${c.stage>=4?"استلم العلاج":"قيد الإجراء"} · ${c.chronic?"علاج مزمن":"احتياج مؤقت"}</p><p><b>آخر تعديل طبي:</b> ${esc(c.upd)||"لا توجد تعديلات"}</p></div>`:'<div class="card warn">الكود غير موجود. تأكد من كتابته كما وصلك، مثل DW-0001.</div>'}
-const wk=(i,v)=>mutCfg({weeks:{...S.weeks,[i]:v}});
+async function sp(){const c=g("sp").value.trim().toUpperCase();if(!c)return bad("sp","اكتب كود الحالة");
+ try{bz(1);const j=await call({action:"track",code:c});const st=STAGES.indexOf(j.stage);
+  g("spo").innerHTML=j.found?`<div class="card"><h3>${esc(c)}</h3>${stepsH({stage:Math.max(0,st)})}<p>الحالة: ${st>=4?"استلم العلاج":"قيد الإجراء"} · ${j.chronic?"علاج مزمن":"احتياج مؤقت"}</p><p><b>آخر تعديل طبي:</b> ${esc(j.upd)||"لا توجد تعديلات"}</p></div>`:'<div class="card warn">الكود غير موجود. تأكد من كتابته كما وصلك، مثل DW-0001.</div>'}
+ catch(e){fail(e)}finally{bz(0)}}
+const wk=(i,v)=>{const w={...S.weeks,[i]:v};return wr({action:"setcfg",weeks:Object.keys(w).filter(k=>w[k]).map(k=>+k+1).join(",")})};
 function fm(){return{members:+g("f_mem").value||1,patients:+g("f_pat").value||1,income:+g("f_inc").value||0,cost:+g("f_cost").value||0,urgency:+g("f_urg").value,chronic:g("f_chr").value==="1",alt:g("f_alt").value==="1"}}
 function pv(){if(!g("sc"))return;const f=fm(),s=calc(f),p=prio(s);g("sc").textContent=s+" / 100";g("pr").innerHTML=`<span class="tag ${p[1]}">أولوية ${p[0]}</span>`;g("det").textContent="نصيب الفرد من الدخل: "+Math.round(f.income/f.members)+" جنيه شهريًا"}
-async function addCase(){const f=fm(),n0=g("f_head").value.trim();if(!n0)return bad("f_head","اكتب اسم رب الأسرة");let code="";
- const o={head:n0,phone:g("f_ph").value,addr:g("f_ad").value,...f,rx:g("f_rx").value,meds:g("f_meds").value.trim(),notes:g("f_notes").value,stage:g("f_rx").value==="متاح"?1:0,upd:"",d:day(0)};
- if(await mut("cases",it=>{const n=Math.max(0,...it.map(c=>+((c.id||"").match(/^DW-(\d+)$/)||[0,0])[1]))+1;code="DW-"+String(n).padStart(4,"0");it.push({id:code,...o});return it})){toast("تم الحفظ. الكود: "+code,"ok");sub="cases";render(1)}}
-const adv=id=>mut("cases",it=>it.map(x=>x.id===id?{...x,stage:Math.min(5,x.stage+1)}:x));
-const cu=(id,v)=>mut("cases",it=>it.map(x=>x.id===id?{...x,upd:v}:x));
+async function addCase(){const f=fm(),n0=g("f_head").value.trim();if(!n0)return bad("f_head","اكتب اسم رب الأسرة");
+ const o={id:"",head:n0,phone:g("f_ph").value,addr:g("f_ad").value,...f,rx:g("f_rx").value,meds:g("f_meds").value.trim(),notes:g("f_notes").value,stage:g("f_rx").value==="متاح"?1:0,upd:"",d:day(0)};
+ const j=await up("cases",o);if(j){toast("تم الحفظ. الكود: "+j.id,"ok");sub="cases";render(1)}}
+const adv=id=>{const x=S.cases.find(c=>c.id===id);return x&&pt("cases",id,{15:STAGES[Math.min(5,x.stage+1)]})};
+const cu=(id,v)=>pt("cases",id,{16:v});
 async function addInv(){const n=g("i_n").value.trim(),q=+g("i_q").value,e=g("i_e").value;if(!n)return bad("i_n","اكتب اسم الدواء");if(q<1)return bad("i_q","اكتب الكمية");if(!e)return bad("i_e","حدد تاريخ الانتهاء");
- if(dd(e)<0)return toast("لا يُقبل صنف منتهي الصلاحية");await up("inv",{id:nid(),n,c:g("i_c").value,q,e,s:g("i_s").value})}
-async function out(id){const i=S.inv.find(x=>x.id===id),q=+g("o"+id).value,code=g("k"+id).value.trim().toUpperCase();if(!i||q<1||q>i.q)return toast("الكمية غير صحيحة أو أكبر من المتاح");
- if(code&&!S.cases.some(c=>c.id===code))return toast("كود الحالة غير موجود");
- const ok=await mut("inv",it=>{const x=it.find(y=>y.id===id);if(!x||x.q<q)throw{code:"write_refused",message:"الكمية في الشيت أقل من المطلوب. حدّث الصفحة."};x.q-=q;return it.filter(y=>y.q>0)});
- if(ok&&await up("log",{id:nid(),d:day(0),n:i.n,q,code}))toast("تم تسجيل الصرف","ok")}
+ if(dd(e)<0)return toast("لا يُقبل صنف منتهي الصلاحية","err");await up("inv",{id:nid(),n,c:g("i_c").value,q,e,s:g("i_s").value})}
+async function out(id){const i=S.inv.find(x=>x.id===id),q=+g("o"+id).value,code=g("k"+id).value.trim().toUpperCase();if(!i||q<1||q>i.q)return toast("الكمية غير صحيحة أو أكبر من المتاح","err");
+ if(code&&!S.cases.some(c=>c.id===code))return toast("كود الحالة غير موجود","err");
+ if(await wr({action:"invOut",id,q,code,d:day(0),n:i.n}))toast("تم تسجيل الصرف","ok")}
 async function addDon(){const a=+g("n_a").value,n0=g("n_n").value.trim(),code=g("n_c").value.trim().toUpperCase();if(!n0)return bad("n_n","اكتب اسم المتبرع");if(!(a>0||g("n_t").value==="تبرع عيني"))return bad("n_a","اكتب المبلغ");
- if(code&&!S.cases.some(c=>c.id===code))return toast("كود المريض غير موجود");
+ if(code&&!S.cases.some(c=>c.id===code))return toast("كود المريض غير موجود","err");
  if(await up("don",{id:nid(),name:n0,amt:a,ch:g("n_m").value,type:g("n_t").value,code,ref:g("n_r").value,d:g("n_d").value,st:g("n_s").value}))toast("تم تسجيل التبرع","ok")}
-const cfm=id=>mut("don",it=>it.map(x=>x.id===id?{...x,st:"مؤكد"}:x));
+const cfm=id=>pt("don",id,{8:"مؤكد"});
 async function addExp(){const a=+g("e_a").value;if(!(a>0))return bad("e_a","اكتب مبلغ المصروف");if(await up("exp",{id:nid(),d:g("e_d").value,amt:a,cat:g("e_c").value,sup:g("e_s").value,inv:g("e_i").value}))toast("تم تسجيل المصروف","ok")}
 function addPay(){const n=g("p_n").value.trim();if(!n)return bad("p_n","اكتب الرقم أو رقم الحساب");up("pay",{id:nid(),type:g("p_t").value,number:n,holder:g("p_h").value,note:g("p_o").value})}
 function rmPay(i){const p=S.pay[i];if(p)del("pay",p.id)}
-async function saveS(){if(await mutCfg({wa:g("s_w").value.replace(/\D/g,""),goal:+g("s_g").value||0}))toast("تم حفظ الإعدادات","ok")}
+async function saveS(){if(await wr({action:"setcfg",wa:g("s_w").value.replace(/\D/g,""),goal:+g("s_g").value||0}))toast("تم حفظ الإعدادات","ok")}
 init();
 </script>
 </body>
